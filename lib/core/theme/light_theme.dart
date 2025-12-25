@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:taskora/core/config/constants/app_sizes.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
 
+import 'app_text_theme.dart';
+
 abstract class AppFontFamily {
   static const String tajawal = 'Tajawal';
 }
@@ -25,6 +27,8 @@ final ThemeData lightTheme = ThemeData(
     onBackground: ColorManager.textPrimaryColor,
     onError: Colors.white,
   ),
+
+  textTheme: AppTextTheme.applyTextColors(AppTextTheme.lightTextTheme),
 
   scaffoldBackgroundColor: ColorManager.backgroundColor,
 
@@ -54,10 +58,7 @@ final ThemeData lightTheme = ThemeData(
           Radius.circular(BorderRadiusSize.borderRadius),
         ),
       ),
-      textStyle: const TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 16,
-      ),
+      textStyle: AppTextTheme.lightTextTheme.labelLarge,
     ),
   ),
 
@@ -66,4 +67,43 @@ final ThemeData lightTheme = ThemeData(
     thickness: 1,
     space: 1,
   ),
+
+  ///  Dashboard Cards
+  cardTheme: CardThemeData(
+    elevation: 0,
+    color: Colors.white,
+    surfaceTintColor: Colors.transparent,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadiusCircular),
+  ),),
+
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: Colors.white,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+    hintStyle: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
+      color: ColorManager.statusColor,
+    ),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius),
+      borderSide: const BorderSide(color: ColorManager.dividerColor),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius),
+      borderSide: const BorderSide(color: ColorManager.dividerColor),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius),
+      borderSide: const BorderSide(color: ColorManager.secondaryColor, width: 1.4),
+    ),
+  ),
+
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: ColorManager.backgroundColor,
+    elevation: 0,
+    type: BottomNavigationBarType.fixed,
+    selectedItemColor: ColorManager.secondaryColor,
+    unselectedItemColor: ColorManager.statusColor,
+  ),
+
 );
