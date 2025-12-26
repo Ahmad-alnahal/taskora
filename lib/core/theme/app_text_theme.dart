@@ -4,7 +4,9 @@ import '../config/constants/color_manager.dart';
 class AppTextTheme {
   AppTextTheme._();
 
+
   static TextTheme lightTextTheme = const TextTheme(
+
     /// Header 1
     headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w700, height: 1.25),
 
@@ -40,4 +42,9 @@ class AppTextTheme {
 class AppButtonTextStyles {
   static const primary = TextStyle(fontSize: 16, fontWeight: FontWeight.w700, height: 1.25);
   static const small   = TextStyle(fontSize: 14, fontWeight: FontWeight.w700, height: 1.25);
+}
+class OnboardingTextTheme {
+  static const title = TextStyle(color: ColorManager.primaryColor,fontSize: 20,fontWeight: FontWeight.w700);
+  static const description = TextStyle(fontSize: 18,fontWeight: FontWeight.w400);
+
 }

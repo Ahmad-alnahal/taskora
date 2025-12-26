@@ -29,11 +29,11 @@ class AppPrimaryIconButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Text(text),
           if (icon != null) ...[
             Icon(icon!.icon, size: AppIconsSizes.iconsDefaultSize),
             const SizedBox(width: SizedBoxSizes.sizedBoxSmallWidth),
           ],
-          Text(text),
         ],
       ),
     );

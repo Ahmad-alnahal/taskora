@@ -21,6 +21,7 @@ class AppIconsSizes {
 class SizedBoxSizes{
   SizedBoxSizes._();
 
+  static const double sizedBoxXLargeHeight = 50;
   static const double sizedBoxLargeHeight = 35;
   static const double sizedBoxMediumHeight = 20;
   static const double sizedBoxSmallHeight = 8;

@@ -3,6 +3,7 @@ import 'core/config/widgets/logo/app_logo.dart';
 import 'core/config/widgets/logo/auth_header.dart';
 import 'core/config/widgets/text_fields/app_text_field.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
+import 'features/Onboarding/pages/onboarding_page.dart';
 
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         title: 'Taskora',
         debugShowCheckedModeBanner: false,
         theme: LightTheme.lightTheme,
-        home: const TestingScreen(),
+        home: const OnboardingPage(),
 
     );
   }
