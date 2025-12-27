@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppPadding {
   AppPadding._();
   static const double paddingHorizontal = 16;
+  static const EdgeInsets paddingAll16 = EdgeInsets.all(16);
 }
 class AppButtonsSizes {
   AppButtonsSizes._();
@@ -23,7 +24,7 @@ class SizedBoxSizes{
 
   static const double sizedBoxXLargeHeight = 50;
   static const double sizedBoxLargeHeight = 35;
-  static const double sizedBoxMediumHeight = 20;
+  static const double sizedBoxMediumHeight = 22;
   static const double sizedBoxSmallHeight = 8;
   static const double sizedBoxLargeWidth = 35;
   static const double sizedBoxMediumWidth = 20;
@@ -37,7 +38,7 @@ class SplashLogoSizes{
 }
 class BorderRadiusSize {
   BorderRadiusSize._();
-  static const double borderRadius = 10;
+  static const double borderRadius = 15;
   static const double borderRadiusCircular = 25;
   static const double borderRadiusLogo = 50;
   static const double borderRadiusPill = 999;

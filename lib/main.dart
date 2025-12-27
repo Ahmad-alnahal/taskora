@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'core/config/widgets/logo/app_logo.dart';
-import 'core/config/widgets/logo/auth_header.dart';
-import 'core/config/widgets/text_fields/app_text_field.dart';
+import 'core/config/widgets/Cards/ProjectProgressCard.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
-import 'features/Onboarding/pages/onboarding_page.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'Taskora',
         debugShowCheckedModeBanner: false,
         theme: LightTheme.lightTheme,
-        home: const OnboardingPage(),
+        home: const TestingScreen(),
 
     );
   }
@@ -44,7 +40,16 @@ class TestingScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Center(
-          child: AuthHeader(),
+          child:SizedBox(
+            child: ProjectProgressCard(
+              title: 'تطبيق التجارة الإلكترونية',
+              company: 'شركة التقنية الحديثة',
+              progress: 0.6, // مثال
+              tasksText: '12/24 مهمة',
+              hoursText: '80/45 ساعة',
+
+            )
+          ),
         ),
       ),
     );
