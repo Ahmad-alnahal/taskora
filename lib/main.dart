@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'core/config/widgets/Cards/ProjectProgressCard.dart';
-import 'core/config/widgets/status_badge/AppStatusBadge.dart';
-import 'core/config/widgets/tasks_list/AppTaskList.dart';
-import 'core/config/widgets/tasks_list/AppTaskListTile.dart';
+import 'core/config/widgets/Cards/CircularProgressCard.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
 
 void main() {
@@ -42,23 +39,14 @@ class TestingScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppTaskListTile(
-              title: 'المهام القادمة',
-              type: TaskTileType.alert,
+        child: Center(
+          child: SizedBox(
+            child: const CircularProgressCard(
+            value: 65,
+            label: 'الإنجاز',
+            size: 120,
             ),
-            SizedBox(height: 10,),
-            AppTaskList(
-              title: 'تصميم واجهة المستخدم',
-              subtitle: 'تطبيق التجارة',
-              stateBadge: TaskStateBadge.inProgress,
-              sideColor: const Color(0xFF6C63FF),
-            )
-          ],
-
+          ),
         ),
       ),
     );
