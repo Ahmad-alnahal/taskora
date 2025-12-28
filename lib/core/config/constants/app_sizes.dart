@@ -4,6 +4,7 @@ class AppPadding {
   AppPadding._();
   static const double paddingHorizontal = 16;
   static const EdgeInsets paddingAll16 = EdgeInsets.all(16);
+  static const EdgeInsets paddingH12_V6 =  EdgeInsets.symmetric(horizontal: 12,vertical: 6);
 }
 class AppButtonsSizes {
   AppButtonsSizes._();
@@ -12,7 +13,7 @@ class AppButtonsSizes {
   static const double buttonDefaultHeight = 49;
   static const double buttonSmallHeight = 28;
   static  EdgeInsets buttonHorizontalPadding = EdgeInsets.symmetric(horizontal: buttonPaddingHorizontal);
-  static  EdgeInsets chipButtonPadding =  EdgeInsets.symmetric(horizontal: 12,vertical: 6);
+
 }
 class AppIconsSizes {
   AppIconsSizes._();
@@ -42,4 +43,10 @@ class BorderRadiusSize {
   static const double borderRadiusCircular = 25;
   static const double borderRadiusLogo = 50;
   static const double borderRadiusPill = 999;
+
+  static const BoxShadow liteBoxShadow = BoxShadow(
+    color: Color(0x14000000),
+    blurRadius: 16,
+    offset: Offset(0, 10),
+  );
 }

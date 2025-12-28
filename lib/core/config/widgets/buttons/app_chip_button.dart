@@ -26,7 +26,7 @@ class AppChipButton extends StatelessWidget {
       fullWidth: false,
       height: AppButtonsSizes.buttonSmallHeight,
       radius: BorderRadiusSize.borderRadiusPill,
-      padding:AppButtonsSizes.chipButtonPadding,
+      padding:AppPadding.paddingH12_V6,
       backgroundColor: ColorManager.secondaryColor,
       foregroundColor: Colors.white,
       child:  AppIconText(

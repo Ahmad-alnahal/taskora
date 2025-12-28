@@ -22,6 +22,11 @@ class ColorManager {
   static const interactiveColor   = Color(0xFFEEECE9);
   static const backgroundColor   = Color(0xFFFBFAF9);
   static const dividerColor   = Color(0xFFC4C4C4);
+  static final Color stateBadgeColor= const Color(0xFFF4C27A33).withValues(alpha: 0.2);
+  static const priorityBadgeLow= Color(0xFF6C5CE7);
+  static const priorityBadgeMedium= Color(0xFFF39C12);
+  static const badgeTextColor= Color(0xFFE74C3C);
+  static const taskListSubtitleColor= Color(0xFF888585);
 
 
 }
