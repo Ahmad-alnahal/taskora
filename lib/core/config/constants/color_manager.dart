@@ -27,6 +27,8 @@ class ColorManager {
   static const priorityBadgeMedium= Color(0xFFF39C12);
   static const badgeTextColor= Color(0xFFE74C3C);
   static const taskListSubtitleColor= Color(0xFF888585);
+  ///bottomNavBarNotActiveColor
+  static const bNBNAColor= Color(0xFF888585);
 
 
 }

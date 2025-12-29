@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'core/config/widgets/Cards/CircularProgressCard.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
+import 'features/main_nav/pages/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Taskora',
         debugShowCheckedModeBanner: false,
         theme: LightTheme.lightTheme,
-        home: const TestingScreen(),
+        home: const MainPage(),
 
     );
   }

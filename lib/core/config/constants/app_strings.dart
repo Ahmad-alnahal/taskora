@@ -29,3 +29,9 @@ class StatusBadgeStrings{
   static const String medium ='متوسطة';
   static const String low ='منخفضة';
 }
+
+class BottomNavBarStrings{
+  static const String home = 'الرئيسية';
+  static const String projects = 'المشاريع';
+  static const String profile = 'الملف الشخصي';
+}
