@@ -78,7 +78,7 @@ class AppAlertDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
-                Icon(icon, size: 50, color: ColorManager.alertDialogIconColor),
+                Icon(icon, size: 50, color: ColorManager.priorityHighRedColor),
 
                 const SizedBox(height: SizedBoxSizes.sizedBoxMediumHeight),
                 Text(

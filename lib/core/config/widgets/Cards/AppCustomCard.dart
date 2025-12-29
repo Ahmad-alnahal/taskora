@@ -65,12 +65,11 @@ class AppCustomCard extends StatelessWidget {
               border: Border.all(color: borderColor, width: 1),
             ),
             child: Stack(
+              clipBehavior: clipBehavior,
               children: [
-                Positioned.fill(
-                  child: Padding(
-                    padding: padding,
-                    child: child,
-                  ),
+                Padding(
+                  padding: padding,
+                  child: child,
                 ),
 
                 if (badge != null)

@@ -53,12 +53,12 @@ class AppStatusBadge extends StatelessWidget {
         case TaskStateBadge.inProgress:
           return _BadgeConfig(
             text: StatusBadgeStrings.inProgress,
-            tC: ColorManager.badgeTextColor,
+            tC: ColorManager.priorityHighRedColor,
           );
         case TaskStateBadge.toDo:
           return _BadgeConfig(
             text: StatusBadgeStrings.toDo,
-            tC: ColorManager.badgeTextColor,
+            tC: ColorManager.priorityHighRedColor,
           );
       }
     }
@@ -66,7 +66,7 @@ class AppStatusBadge extends StatelessWidget {
       case TaskPriorityBadge.high:
         return _BadgeConfig(
           text: StatusBadgeStrings.high,
-          tC: ColorManager.badgeTextColor,
+          tC: ColorManager.priorityHighRedColor,
         );
       case TaskPriorityBadge.medium:
         return _BadgeConfig(

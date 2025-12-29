@@ -15,6 +15,7 @@ class ColorManager {
   static const accentLightColor = Color(0xFFE7E1F0);
   static const successColor = Color(0xFFB4E3C1);
   static const priorityHighColor = Color(0xFFE57373);
+  static const priorityHighRedColor = Color(0xFFEB3640);
   static const priorityMediumColor = Color(0xFFF4C27A);
   static const priorityLowColor = Color(0xFF98C8E0);
   static const textPrimaryColor   = Color(0xFF000000);
@@ -25,11 +26,9 @@ class ColorManager {
   static final Color stateBadgeColor= const Color(0xFFF4C27A33).withValues(alpha: 0.2);
   static const priorityBadgeLow= Color(0xFF6C5CE7);
   static const priorityBadgeMedium= Color(0xFFF39C12);
-  static const badgeTextColor= Color(0xFFE74C3C);
   static const taskListSubtitleColor= Color(0xFF888585);
   ///bottomNavBarNotActiveColor
   static const bNBNAColor= Color(0xFF888585);
-  static const alertDialogIconColor= Color(0xFFEB3640);
   static const alertDialogNotActiveButtonColor= Color(0xFFDDDDDD);
 
 
