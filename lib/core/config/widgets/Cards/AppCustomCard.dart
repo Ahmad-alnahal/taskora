@@ -8,7 +8,7 @@ class AppCustomCard extends StatelessWidget {
     super.key,
     required this.child,
     this.onTap,
-    this.radius = BorderRadiusSize.borderRadius,
+    this.radius = BorderRadiusSize.borderRadius15,
     this.padding = AppPadding.paddingAll16,
     this.margin = EdgeInsets.zero,
     this.backgroundColor = Colors.white,

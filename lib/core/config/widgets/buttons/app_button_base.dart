@@ -31,7 +31,7 @@ class AppButtonBase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final r = radius ?? BorderRadiusSize.borderRadius;
+    final r = radius ?? BorderRadiusSize.borderRadius15;
 
     final button = ElevatedButton(
       onPressed: isLoading ? null : onPressed,

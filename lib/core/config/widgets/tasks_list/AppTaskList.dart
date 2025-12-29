@@ -32,7 +32,7 @@ class AppTaskList extends StatelessWidget {
         height: 70,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius),
+          borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius15),
           boxShadow: const [
             BorderRadiusSize.liteBoxShadow
           ],
@@ -46,8 +46,8 @@ class AppTaskList extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: sideColor,
                   borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(BorderRadiusSize.borderRadius),
-                    bottomRight: Radius.circular(BorderRadiusSize.borderRadius),
+                    topRight: Radius.circular(BorderRadiusSize.borderRadius15),
+                    bottomRight: Radius.circular(BorderRadiusSize.borderRadius15),
                   ),
                 ),
               ),

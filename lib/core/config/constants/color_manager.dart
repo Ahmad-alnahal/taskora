@@ -29,6 +29,8 @@ class ColorManager {
   static const taskListSubtitleColor= Color(0xFF888585);
   ///bottomNavBarNotActiveColor
   static const bNBNAColor= Color(0xFF888585);
+  static const alertDialogIconColor= Color(0xFFEB3640);
+  static const alertDialogNotActiveButtonColor= Color(0xFFDDDDDD);
 
 
 }

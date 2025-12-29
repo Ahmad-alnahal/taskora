@@ -31,7 +31,14 @@ class StatusBadgeStrings{
 }
 
 class BottomNavBarStrings{
+  BottomNavBarStrings._();
   static const String home = 'الرئيسية';
   static const String projects = 'المشاريع';
   static const String profile = 'الملف الشخصي';
+}
+
+class AlertDialogStrings{
+  AlertDialogStrings._();
+  static const String confirmText = 'نعم';
+  static const String cancelText = 'لا';
 }

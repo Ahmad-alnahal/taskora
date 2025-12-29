@@ -55,7 +55,7 @@ final ThemeData lightTheme = ThemeData(
       maximumSize: const Size(double.infinity, 49),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(BorderRadiusSize.borderRadius),
+          Radius.circular(BorderRadiusSize.borderRadius15),
         ),
       ),
       textStyle: AppTextTheme.lightTextTheme.labelLarge,
@@ -85,15 +85,15 @@ final ThemeData lightTheme = ThemeData(
       color: ColorManager.statusColor,
     ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius),
+      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius15),
       borderSide: const BorderSide(color: ColorManager.dividerColor),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius),
+      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius15),
       borderSide: const BorderSide(color: ColorManager.dividerColor),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius),
+      borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius15),
       borderSide: const BorderSide(color: ColorManager.secondaryColor, width: 1.4),
     ),
   ),

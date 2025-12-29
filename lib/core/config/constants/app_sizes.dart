@@ -5,6 +5,7 @@ class AppPadding {
   static const double paddingHorizontal = 16;
   static const EdgeInsets paddingAll10 = EdgeInsets.all(10);
   static const EdgeInsets paddingAll16 = EdgeInsets.all(16);
+  static const EdgeInsets paddingAll50 = EdgeInsets.all(50);
   static const EdgeInsets paddingH12_V6 =  EdgeInsets.symmetric(horizontal: 12,vertical: 6);
 }
 class AppButtonsSizes {
@@ -40,7 +41,8 @@ class SplashLogoSizes{
 }
 class BorderRadiusSize {
   BorderRadiusSize._();
-  static const double borderRadius = 15;
+  static const double borderRadius10 = 10;
+  static const double borderRadius15 = 15;
   static const double borderRadius18 = 18;
   static const double borderRadiusCircular = 25;
   static const double borderRadiusCircular22 = 22;
