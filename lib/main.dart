@@ -3,6 +3,7 @@ import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
 import 'core/config/widgets/Cards/CircularProgressCard.dart';
 import 'core/config/widgets/BottomSheets/AppBottomSheet.dart';
+import 'core/config/widgets/SnackBars/app_snackbar.dart';
 import 'core/config/widgets/buttons/app_primary_icon_button.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
 
@@ -54,13 +55,16 @@ class TestingScreen extends StatelessWidget {
                 size: 120,
                 ),
                 SizedBox(height: 20,),
-                AppPrimaryIconButton(text: 'showSnackBar', onPressed: () {
-                  AppBottomSheet.show(
-                    context,
-                    type: AppBottomSheetTypes.empty,
-                    message: AppBottomSheetStrings.emptyStateMessage,
-                  );
-                },)
+                AppPrimaryIconButton(
+                  text: 'showSnackBar',
+                    onPressed: () {
+                    AppSnackBar.show(
+                      context,
+                      message: "تم حفظ البيانات بنجاح",
+                      type: AppSnackBarType.success,
+                    );
+                  },
+                )
               ],
             ),
           ),

@@ -192,7 +192,7 @@ class _AppBottomSheetBody extends StatelessWidget {
                     child: Text(
                       message,
                       textAlign: TextAlign.center,
-                      style: BottomSheetTextTheme.message.copyWith(
+                      style: BottomSheetTextTheme.messageStyle.copyWith(
                         color: accent,
                       ),
                     ),

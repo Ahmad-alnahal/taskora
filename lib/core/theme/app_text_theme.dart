@@ -52,11 +52,17 @@ class OnboardingTextTheme {
 }
 class BottomSheetTextTheme {
   BottomSheetTextTheme._();
-  static const message = TextStyle(
+  static const messageStyle = TextStyle(
     fontSize: 18,
     fontStyle: FontStyle.italic,
     fontWeight: FontWeight.w500,
   );
-  static const description = TextStyle(fontSize: 18,fontWeight: FontWeight.w400);
-
+}
+class SnackBarTextTheme {
+  SnackBarTextTheme._();
+  static const messageStyle =TextStyle(
+    fontSize: 20,
+    color: Colors.white,
+    fontWeight: FontWeight.w500,
+  );
 }
