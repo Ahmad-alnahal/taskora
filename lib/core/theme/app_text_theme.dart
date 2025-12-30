@@ -53,7 +53,7 @@ class OnboardingTextTheme {
 class BottomSheetTextTheme {
   BottomSheetTextTheme._();
   static const message = TextStyle(
-    fontSize: 22,
+    fontSize: 18,
     fontStyle: FontStyle.italic,
     fontWeight: FontWeight.w500,
   );

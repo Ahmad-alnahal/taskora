@@ -51,23 +51,41 @@ class AppBottomSheet {
           }
 
           final h = MediaQuery.sizeOf(context).height;
-          return SizedBox(
-            height: h,
-            child: _AppBottomSheetBody(
-              showBackButtons: showBackButtons,
-              type: type,
-              accent: accent,
-              message: message,
-              title: title,
-              description: description,
-              retryText: retryText,
-              backText: backText,
-              onRetry: onRetry,
-              onBack: onBack,
-              showButtonsOnError: showButtonsOnError,
-              errorImageAsset: errorImageAsset,
-            ),
-          );
+          if (type == AppBottomSheetTypes.success) {
+          return _AppBottomSheetBody(
+            showBackButtons: showBackButtons,
+            type: type,
+            accent: accent,
+            message: message,
+            title: title,
+            description: description,
+            retryText: retryText,
+            backText: backText,
+            onRetry: onRetry,
+            onBack: onBack,
+            showButtonsOnError: showButtonsOnError,
+            errorImageAsset: errorImageAsset,
+          );}
+          else{
+            return SizedBox(
+              height: h,
+              child: _AppBottomSheetBody(
+                showBackButtons: showBackButtons,
+                type: type,
+                accent: accent,
+                message: message,
+                title: title,
+                description: description,
+                retryText: retryText,
+                backText: backText,
+                onRetry: onRetry,
+                onBack: onBack,
+                showButtonsOnError: showButtonsOnError,
+                errorImageAsset: errorImageAsset,
+              ),
+            );
+
+          }
         }
 
     );
@@ -126,11 +144,14 @@ class _AppBottomSheetBody extends StatelessWidget {
               if (!isError) ...[
                 _SuccessStackedIcon(accent: accent),
                 const SizedBox(height: SizedBoxSizes.sizedBoxSmallHeight),
-                Text(
-                  message,
-                  textAlign: TextAlign.center,
-                  style: BottomSheetTextTheme.message.copyWith(
-                    color: accent,
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    message,
+                    textAlign: TextAlign.center,
+                    style: BottomSheetTextTheme.message.copyWith(
+                      color: accent,
+                    ),
                   ),
                 ),
               ] else ...[

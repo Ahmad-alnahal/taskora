@@ -44,6 +44,8 @@ class AlertDialogStrings{
 }
 class AppBottomSheetStrings{
   AppBottomSheetStrings._();
+  static const String congratulationsAccountCreated = 'مبـــروك. تم إنشـــاء حســابك بنجاح !.';
+
   static const String retry = 'إعادة المحاولة';
   static const String back = 'العودة';
   static const String unexpectedError =  'حدث خطأ غير متوقع';
