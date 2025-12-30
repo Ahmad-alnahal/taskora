@@ -26,10 +26,10 @@ class ColorManager {
   static final Color stateBadgeColor= const Color(0xFFF4C27A33).withValues(alpha: 0.2);
   static const priorityBadgeLow= Color(0xFF6C5CE7);
   static const priorityBadgeMedium= Color(0xFFF39C12);
-  static const taskListSubtitleColor= Color(0xFF888585);
-  ///bottomNavBarNotActiveColor
-  static const bNBNAColor= Color(0xFF888585);
   static const alertDialogNotActiveButtonColor= Color(0xFFDDDDDD);
+
+  /// used in appBottomSheet in error text
+  static const notActiveColor= Color(0xFF888585);
 
 
 }

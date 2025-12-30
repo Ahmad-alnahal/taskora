@@ -90,7 +90,7 @@ class _NavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const activeColor =ColorManager.secondaryColor;
-    final color = isActive ? activeColor :ColorManager.bNBNAColor ;
+    final color = isActive ? activeColor :ColorManager.notActiveColor ;
 
     return InkWell(
       borderRadius: BorderRadius.circular(BorderRadiusSize.borderRadius18),

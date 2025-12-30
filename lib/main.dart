@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'core/config/widgets/AlertDialogs/AppAlertDialog.dart';
+import 'package:taskora/core/config/constants/app_strings.dart';
+import 'package:taskora/core/config/constants/image_path.dart';
 import 'core/config/widgets/Cards/CircularProgressCard.dart';
-import 'core/config/widgets/Cards/CustomInfoCard.dart';
+import 'core/config/widgets/BottomSheets/AppBottomSheet.dart';
 import 'core/config/widgets/buttons/app_primary_icon_button.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
-import 'features/main_nav/pages/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,12 +43,30 @@ class TestingScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
-        child: Align(
-          alignment: Alignment.center,
-          child: CustomInfoCard(
-            type: CustomInfoCardType.info,
-            title: 'حالة المهمة',
-            description: 'المهام الجديدة يتم ضبطها تلقائياً على قيد التنفيذ دائماً، يمكنك تحديث الحالة بعد الإنشاء من واجهة المشروع أو تفاصيل المهمة.',
+        child: Center(
+          child: SizedBox(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CircularProgressCard(
+                value: 65,
+                label: 'الإنجاز',
+                size: 120,
+                ),
+                SizedBox(height: 20,),
+                AppPrimaryIconButton(text: 'showSnackBar', onPressed: () {
+                  AppBottomSheet.show(
+                    context,
+                    type: AppBottomSheetTypes.error,
+                    message: AppBottomSheetStrings.uncompletedProcessTryAgain,
+                    showBackButtons: true,
+                    onBack: () => (){},
+                    onRetry: () => (){},
+                    errorImageAsset: ImagePath.errorImage
+                  );
+                },)
+              ],
+            ),
           ),
         ),
       ),

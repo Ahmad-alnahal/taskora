@@ -25,6 +25,7 @@ class AppIconsSizes {
 class SizedBoxSizes{
   SizedBoxSizes._();
 
+  static const double sizedBoxXXLargeHeight = 100;
   static const double sizedBoxXLargeHeight = 50;
   static const double sizedBoxLargeHeight = 35;
   static const double sizedBoxMediumHeight = 22;
@@ -32,6 +33,7 @@ class SizedBoxSizes{
   static const double sizedBoxLargeWidth = 35;
   static const double sizedBoxMediumWidth = 20;
   static const double sizedBoxSmallWidth = 8;
+  static const double sizedBoxHeight16 = 16;
 }
 class SplashLogoSizes{
   SplashLogoSizes._();

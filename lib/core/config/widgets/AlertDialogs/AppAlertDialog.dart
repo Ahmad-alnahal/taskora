@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../theme/app_text_theme.dart';
 import '../../constants/app_sizes.dart';
 import '../../constants/app_strings.dart';
@@ -11,7 +10,6 @@ class AppAlertDialog extends StatelessWidget {
     super.key,
     required this.message,
     this.icon = Icons.power_settings_new_rounded,
-    this.iconColor = const Color(0xFFE53935),
     this.confirmText = AlertDialogStrings.confirmText,
     this.cancelText = AlertDialogStrings.cancelText,
     this.onConfirm,
@@ -23,8 +21,6 @@ class AppAlertDialog extends StatelessWidget {
   final String message;
 
   final IconData icon;
-  final Color iconColor;
-
   final String confirmText;
   final String cancelText;
 

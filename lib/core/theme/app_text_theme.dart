@@ -40,11 +40,23 @@ class AppTextTheme {
   }
 }
 class AppButtonTextStyles {
+  AppButtonTextStyles._();
   static const primary = TextStyle(fontSize: 16, fontWeight: FontWeight.w700, height: 1.25);
   static const small   = TextStyle(fontSize: 14, fontWeight: FontWeight.w700, height: 1.25);
 }
 class OnboardingTextTheme {
+  OnboardingTextTheme._();
   static const title = TextStyle(color: ColorManager.primaryColor,fontSize: 20,fontWeight: FontWeight.w700);
+  static const description = TextStyle(fontSize: 18,fontWeight: FontWeight.w400);
+
+}
+class BottomSheetTextTheme {
+  BottomSheetTextTheme._();
+  static const message = TextStyle(
+    fontSize: 22,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w500,
+  );
   static const description = TextStyle(fontSize: 18,fontWeight: FontWeight.w400);
 
 }

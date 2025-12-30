@@ -42,3 +42,11 @@ class AlertDialogStrings{
   static const String confirmText = 'نعم';
   static const String cancelText = 'لا';
 }
+class AppBottomSheetStrings{
+  AppBottomSheetStrings._();
+  static const String retry = 'إعادة المحاولة';
+  static const String back = 'العودة';
+  static const String unexpectedError =  'حدث خطأ غير متوقع';
+  static const String uncompletedProcessTryAgain =  'لم نتمكن من إكمال العملية، يرجى المحاولة مرة أخرى.';
+
+}

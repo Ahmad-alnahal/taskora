@@ -22,10 +22,12 @@ class AppPrimaryIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppButtonBase(
+
       onPressed: onPressed,
       isLoading: isLoading,
       backgroundColor:buttonColor != null ? buttonColor!: ColorManager.secondaryColor,
-      foregroundColor: Colors.white,
+      foregroundColor: buttonColor != null ? ColorManager.secondaryColor: Colors.white,
+      borderColor: buttonColor != null ? ColorManager.notActiveColor : null,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

@@ -74,7 +74,7 @@ class AppTaskList extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: ColorManager.taskListSubtitleColor,
+                        color: ColorManager.notActiveColor,
                         height: 1.1,
                       ),
                     ),
