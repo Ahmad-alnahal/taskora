@@ -57,12 +57,8 @@ class TestingScreen extends StatelessWidget {
                 AppPrimaryIconButton(text: 'showSnackBar', onPressed: () {
                   AppBottomSheet.show(
                     context,
-                    type: AppBottomSheetTypes.success,
-                    message: AppBottomSheetStrings.congratulationsAccountCreated,
-                    showBackButtons: true,
-                    onBack: () => (){},
-                    onRetry: () => (){},
-                    errorImageAsset: ImagePath.errorImage
+                    type: AppBottomSheetTypes.empty,
+                    message: AppBottomSheetStrings.emptyStateMessage,
                   );
                 },)
               ],

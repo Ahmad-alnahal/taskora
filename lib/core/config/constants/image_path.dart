@@ -8,5 +8,6 @@ class ImagePath {
   static const String errorImage = 'assets/images/errorImage.png';
   static const String noInternetImage = 'assets/images/noInternetImage.png';
   static const String noDataImage = 'assets/images/noDataImage.png';
+  static const String emptyStateImage = 'assets/images/emptyStateImage.png';
 
 }

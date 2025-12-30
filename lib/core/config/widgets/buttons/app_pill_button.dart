@@ -9,11 +9,14 @@ class AppPillButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.isLoading = false,
+    this.textStyle,
   });
 
   final String text;
   final VoidCallback? onPressed;
   final bool isLoading;
+  final TextStyle? textStyle ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class AppPillButton extends StatelessWidget {
       padding: AppButtonsSizes.buttonHorizontalPadding,
       backgroundColor: ColorManager.secondaryColor,
       foregroundColor: Colors.white,
-      child: Text(text),
+      child: Text(text, style: textStyle),
     );
   }
 }

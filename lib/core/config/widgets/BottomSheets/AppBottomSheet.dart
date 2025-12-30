@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
+import 'package:taskora/core/config/widgets/buttons/app_pill_button.dart';
 import '../../../theme/app_text_theme.dart';
 import '../../constants/app_sizes.dart';
 import '../../constants/app_strings.dart';
 import '../buttons/app_primary_icon_button.dart';
 
-enum AppBottomSheetTypes { success, error }
+enum AppBottomSheetTypes { success, error, empty }
 
 class AppBottomSheet {
   static Future<T?> show<T>(
@@ -28,6 +29,7 @@ class AppBottomSheet {
     final Color accent = switch (type) {
       AppBottomSheetTypes.success => ColorManager.secondaryColor,
       AppBottomSheetTypes.error => ColorManager.priorityHighRedColor,
+      AppBottomSheetTypes.empty => ColorManager.secondaryColor,
     };
 
 
@@ -35,6 +37,7 @@ class AppBottomSheet {
       context: context,
       isScrollControlled: switch (type) {
         AppBottomSheetTypes.success => false,
+        AppBottomSheetTypes.empty => true,
         AppBottomSheetTypes.error => true,
       },
       useSafeArea: true,
@@ -133,28 +136,70 @@ class _AppBottomSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isError = type == AppBottomSheetTypes.error;
+    final isEmptyState = type == AppBottomSheetTypes.empty ? true : false;
 
     return Material(
       color: Colors.white,
         child: Padding(
-          padding: AppPadding.paddingAll50,
+          padding: AppPadding.paddingAll10,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               if (!isError) ...[
-                _SuccessStackedIcon(accent: accent),
-                const SizedBox(height: SizedBoxSizes.sizedBoxSmallHeight),
-                SizedBox(
-                  width: double.infinity,
-                  child: Text(
-                    message,
+                if(isEmptyState)...[
+                  SizedBox(width: double.infinity),
+                  SizedBox(height: SizedBoxSizes.sizedBoxXLargeHeight,),
+                  Image.asset(
+                    ImagePath.emptyStateImage,
+                    width: 240,
+                    fit: BoxFit.contain,
+                  ),
+                  const SizedBox(height: SizedBoxSizes.sizedBoxSmallHeight),
+                  Text(
+                    description ?? message,
                     textAlign: TextAlign.center,
-                    style: BottomSheetTextTheme.message.copyWith(
-                      color: accent,
+                    style: const TextStyle(
+                      fontSize: 14,
                     ),
                   ),
-                ),
+                  const SizedBox(height: SizedBoxSizes.sizedBoxHeight16),
+                  SizedBox(
+                    width: 160,
+                    child: AppPillButton(text: AppBottomSheetStrings.startURFirstStep,
+                        textStyle: TextStyle(
+                            fontSize:14,
+                            fontWeight: FontWeight.w500
+                        ),
+                        onPressed: () {
+                      Navigator.of(context).pop();
+                      onBack?.call();
+                    }),
+                  ),
+                  const SizedBox(height: SizedBoxSizes.sizedBoxMediumHeight),
+                  Text(
+                    AppBottomSheetStrings.DWFSIAE,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: ColorManager.secondaryColor
+                    ),
+                  ),
+                ]else...[
+                  _SuccessStackedIcon(accent: accent),
+                  const SizedBox(height: SizedBoxSizes.sizedBoxSmallHeight),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      message,
+                      textAlign: TextAlign.center,
+                      style: BottomSheetTextTheme.message.copyWith(
+                        color: accent,
+                      ),
+                    ),
+                  ),]
+
               ] else ...[
+                SizedBox(width: double.infinity),
                 SizedBox(height: SizedBoxSizes.sizedBoxXXLargeHeight,),
                 Image.asset(
                   errorImageAsset ?? ImagePath.errorImage,

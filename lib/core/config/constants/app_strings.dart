@@ -48,7 +48,12 @@ class AppBottomSheetStrings{
 
   static const String retry = 'إعادة المحاولة';
   static const String back = 'العودة';
+  static const String startURFirstStep = 'ابدأ أول خطوة الك';
+
+  /// Don't worry… the first step is always the easiest!
+  static const String DWFSIAE = 'ما تقلق… أول خطوة دايمًا الأسهل!';
   static const String unexpectedError =  'حدث خطأ غير متوقع';
   static const String uncompletedProcessTryAgain =  'لم نتمكن من إكمال العملية، يرجى المحاولة مرة أخرى.';
+  static const String emptyStateMessage =  "ولا شي هون لسه!\n واضح إنك ما عملت أي إجراء لحد الآن. خلينا نبدأ الرحلة سوا.\n هاي الصفحة فاضية لأنك ما ضفت ولا عنصر.";
 
 }
