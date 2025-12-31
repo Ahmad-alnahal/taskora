@@ -33,6 +33,8 @@ class CustomInfoCard extends StatelessWidget {
 
 
     return AppCustomCard(
+      width: double.infinity,
+      height: 0,
       onTap: onTap,
       margin: margin,
       radius: BorderRadiusSize.borderRadius15,

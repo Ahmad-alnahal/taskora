@@ -30,6 +30,7 @@ class ColorManager {
 
   /// used in appBottomSheet in error text
   static const notActiveColor= Color(0xFF888585);
+  static const dotColor= Color(0xFF9A9AA2);
 
 
 }

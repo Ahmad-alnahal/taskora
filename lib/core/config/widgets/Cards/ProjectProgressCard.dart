@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../constants/app_sizes.dart';
+import '../ProgressIndicators/AppProgressIndicator.dart';
 import 'AppCustomCard.dart';
 
 class ProjectProgressCard extends StatelessWidget {
@@ -12,6 +13,9 @@ class ProjectProgressCard extends StatelessWidget {
     required this.hoursText,
     this.onCardTap,
     this.accentColor = const Color(0xFF0F7A6B),
+    this.progressUpperLimit = 100,
+     this.width = 341,
+     this.height = 148,
   });
 
   final String title;
@@ -22,6 +26,9 @@ class ProjectProgressCard extends StatelessWidget {
 
   final VoidCallback? onCardTap;
   final Color accentColor;
+  final double progressUpperLimit;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +36,9 @@ class ProjectProgressCard extends StatelessWidget {
       width: 341,
       height: 148,
       child: AppCustomCard(
+        margin: EdgeInsets.zero,
+        width: 0,
+        height: 0,
         radius: 18,
         child: InkWell(
           onTap: onCardTap,
@@ -54,7 +64,6 @@ class ProjectProgressCard extends StatelessWidget {
                           height: 1.2,
                         ),
                       ),
-                      const SizedBox(height: 2),
                       Text(
                         company,
                         textAlign: TextAlign.center,
@@ -76,18 +85,13 @@ class ProjectProgressCard extends StatelessWidget {
                  ),
                 ],
               ),
-
-              const SizedBox(height: 21),
-
-              // Progress bar
-              _ProgressPill(
-                value: progress.clamp(0.0, 1.0),
-                color: accentColor,
+              const SizedBox(height: SizedBoxSizes.sizedBoxMediumHeight),
+              AppProgressIndicator(
+                upperLimit: progressUpperLimit,
+                value: progress,
+                type: AppProgressType.linear,
               ),
-
-              const SizedBox(height: 12),
-
-              // Bottom info row (tasks + hours)
+              const SizedBox(height: SizedBoxSizes.sizedBoxMediumHeight),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -114,34 +118,6 @@ class ProjectProgressCard extends StatelessWidget {
     );
   }
 }
-
-
-
-class _ProgressPill extends StatelessWidget {
-  const _ProgressPill({
-    required this.value,
-    required this.color,
-  });
-
-  final double value;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(999),
-      child: SizedBox(
-        height: 8,
-        child: LinearProgressIndicator(
-          value: value,
-          backgroundColor: const Color(0xFFEFEFEF),
-          color: color,
-        ),
-      ),
-    );
-  }
-}
-
 class _InfoItem extends StatelessWidget {
   const _InfoItem({
     required this.icon,
@@ -163,21 +139,22 @@ class _InfoItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Container(
-          width: 24,
-          height: 24,
+          width: 21,
+          height: 21,
           decoration: BoxDecoration(
             color: iconBg,
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, size: 14, color: iconColor),
+          child: Icon(icon, size: 21, color: iconColor),
         ),
         const SizedBox(width: SizedBoxSizes.sizedBoxSmallWidth),
         Text(
           text,
           style: TextStyle(
-            fontSize: 12,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
             color: textColor,
+            height: 1
           ),
         ),
       ],

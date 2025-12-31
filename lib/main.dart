@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/image_path.dart';
+import 'core/config/widgets/Cards/AppCustomCard.dart';
+import 'core/config/widgets/Cards/AppDashboardCard.dart';
 import 'core/config/widgets/Cards/CircularProgressCard.dart';
 import 'core/config/widgets/BottomSheets/AppBottomSheet.dart';
+import 'core/config/widgets/Cards/CustomInfoCard.dart';
+import 'core/config/widgets/Cards/MiniStatCard.dart';
+import 'core/config/widgets/Cards/ProjectProgressCard.dart';
+import 'core/config/widgets/ProgressIndicators/AppProgressIndicator.dart';
 import 'core/config/widgets/SnackBars/app_snackbar.dart';
 import 'core/config/widgets/buttons/app_primary_icon_button.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
@@ -46,25 +52,40 @@ class TestingScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Center(
           child: SizedBox(
-            child: Column(
+            child: Column(spacing: 20,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircularProgressCard(
-                value: 65,
-                label: 'الإنجاز',
-                size: 120,
+                ProjectProgressCard(
+                  title: 'تطبيق التجارة الإلكترونية',
+                  company: 'شركة التقنية الحديثة',
+                  progress: 50,
+                  tasksText: '12/24 مهمة',
+                  hoursText: '80/45 ساعة',
+
                 ),
-                SizedBox(height: 20,),
-                AppPrimaryIconButton(
-                  text: 'showSnackBar',
-                    onPressed: () {
-                    AppSnackBar.show(
-                      context,
-                      message: "تم حفظ البيانات بنجاح",
-                      type: AppSnackBarType.success,
-                    );
-                  },
+                AppProgressIndicator(
+                  value: 90,
+                  type: AppProgressType.linear,
+                ),
+                AppProgressIndicator(
+                  value: 48,
+                  type: AppProgressType.dotted,
+                  dotColor: const Color(0xFF9FA0A8),
+
+                  isRTL: false,
+                ),
+                AppProgressIndicator(
+                  upperLimit: 50,
+                  value: 5,
+                  type: AppProgressType.dotted,
+
+                  fillColor: const Color(0xFF3CCB6B),
+                  dotColor: const Color(0xFF9FA0A8),
+                  isRTL: false,
                 )
+
+
+
               ],
             ),
           ),

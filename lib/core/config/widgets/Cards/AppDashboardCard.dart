@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskora/core/config/constants/color_manager.dart';
 import '../../constants/app_sizes.dart';
 import 'AppCustomCard.dart';
 
@@ -9,20 +10,25 @@ class AppDashboardCard extends StatelessWidget {
     required this.amountText,
     this.onTap,
     this.accentColor = const Color(0xFF0F7A6B),
+    required this.icon,
   });
 
   final String title;
   final String amountText;
   final VoidCallback? onTap;
   final Color accentColor;
+  final IconData icon;
+
 
   @override
   Widget build(BuildContext context) {
     return AppCustomCard(
+      height: 126,
+      width: 160,
       onTap: onTap,
       radius: 18,
       padding: const EdgeInsets.only(top: 20),
-      badge: _CornerMoneyBadge(color: accentColor),
+      badge: _CornerMoneyBadge(color: accentColor, icon: icon,),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,20 +38,17 @@ class AppDashboardCard extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              height: 1.2,
+              fontSize: 17,
+              fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: SizedBoxSizes.sizedBoxSmallHeight),
           Text(
             amountText,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w800,
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
               color: accentColor,
-              height: 1.1,
             ),
           ),
         ],
@@ -56,16 +59,16 @@ class AppDashboardCard extends StatelessWidget {
 
 
 class _CornerMoneyBadge extends StatelessWidget {
-  const _CornerMoneyBadge({required this.color});
+  const _CornerMoneyBadge({required this.color, required this.icon});
 
   final Color color;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-
         Positioned(
           top: -1,
           right: -1,
@@ -73,18 +76,28 @@ class _CornerMoneyBadge extends StatelessWidget {
             width: 69,
             height: 46,
             decoration: BoxDecoration(
-              color: color.withValues(alpha:0.08  ),
+              gradient: LinearGradient(
+                  colors: [
+                    Color(0xFFD1EFEA),
+                    Color(0xFF96D2C8),
+                   ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ).withOpacity(0.2),
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(BorderRadiusSize.borderRadiusCircular)),
+            boxShadow: [
+              BoxShadow(
+              color: ColorManager.notActiveColor.withValues(alpha: 0.2),
+              offset: Offset(0, 8),
+              blurRadius: 8,
+            )],
             ),
           ),
         ),
-
-
         Positioned(
           top: 10,
           right: 14,
-          child: Icon(
-            Icons.attach_money_rounded,
+          child: Icon(icon,
             size: 30,
             color: color,
           ),

@@ -19,6 +19,8 @@ class AppCustomCard extends StatelessWidget {
     this.badge,
     this.badgeAlignment = Alignment.topRight,
     this.clipBehavior = Clip.antiAlias,
+    required this.width,
+    required this.height,
   });
 
   final Widget child;
@@ -36,12 +38,18 @@ class AppCustomCard extends StatelessWidget {
   final Alignment badgeAlignment;
   final EdgeInsets margin;
   final Clip clipBehavior;
+  final double width;
+  final double height;
+
 
   @override
   Widget build(BuildContext context) {
     final r = BorderRadius.circular(radius);
 
     return Container(
+
+      width: width == 0 ? null :width,
+      height:height == 0 ? null : height,
       margin: margin,
       decoration: BoxDecoration(
         borderRadius: r,

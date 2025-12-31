@@ -29,42 +29,42 @@ class MiniStatCard extends StatelessWidget {
       width: width,
       height: height,
       child: AppCustomCard(
+        padding: EdgeInsets.zero,
+        width: 0,
+        height: 0,
         onTap: onTap,
         radius: 16,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8), // ✅ مهم
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 24, color: accentColor),
-            const SizedBox(height: 4),
-
-            Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w700,
-                height: 1.0,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 24, color: accentColor),
+              SizedBox(height: 8,),
+              Text(
+                title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  height: 1
+                ),
               ),
-            ),
-            const SizedBox(height: 2),
-
-            Text(
-              value,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w800,
-                color: accentColor,
-                height: 1.0,
+              Text(
+                value,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: accentColor,
+                  height: 1
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
