@@ -6,8 +6,8 @@ class AppIconText extends StatelessWidget {
     required this.text,
     this.icon,
     this.iconOnLeft = true,
-    this.gap = 8,
-    this.iconSize = 18,
+    this.gap = 6,
+    this.iconSize = 16,
     this.textStyle,
     this.iconColor,
     this.mainAxisSize = MainAxisSize.min,
@@ -33,16 +33,29 @@ class AppIconText extends StatelessWidget {
         ? null
         : Icon(icon, size: iconSize, color: iconColor);
 
-    if (iconWidget == null) return Text(text);
+    if (iconWidget == null) {
+      return Text(text,
+        style: TextStyle(
+            fontSize: 16,
+            height: 1,
+            fontWeight: FontWeight.w400)
+      );
+    }
 
     final children = <Widget>[
       iconWidget,
       SizedBox(width: gap),
-      Text(text),
+      Text(text,
+        style: TextStyle(
+            fontSize: 16,
+            height: 1,
+            fontWeight: FontWeight.w400)
+      ),
     ];
 
     return Row(
       mainAxisSize: mainAxisSize,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: iconOnLeft ? children : children.reversed.toList(),
     );
   }

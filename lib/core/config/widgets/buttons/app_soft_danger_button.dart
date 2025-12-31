@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../constants/app_sizes.dart';
 import '../../constants/color_manager.dart';
 import 'app_button_base.dart';
-import 'app_icon_text.dart';
+import '../Texts/app_icon_text.dart';
 
 class AppSoftDangerButton extends StatelessWidget {
   const AppSoftDangerButton({

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/app_sizes.dart';
 import '../../constants/color_manager.dart';
 import 'app_button_base.dart';
-import 'app_icon_text.dart';
+import '../Texts/app_icon_text.dart';
 
 class AppChipButton extends StatelessWidget {
   const AppChipButton({
@@ -26,14 +26,13 @@ class AppChipButton extends StatelessWidget {
       fullWidth: false,
       height: AppButtonsSizes.buttonSmallHeight,
       radius: BorderRadiusSize.borderRadiusPill,
-      padding:AppPadding.paddingH12_V6,
+      padding:EdgeInsets.zero,
       backgroundColor: ColorManager.secondaryColor,
       foregroundColor: Colors.white,
       child:  AppIconText(
       text: text,
       icon: icon?.icon,          
       iconOnLeft: isIconOnLeft,
-      gap: SizedBoxSizes.sizedBoxSmallWidth,
       iconSize: AppIconsSizes.iconsDefaultSize,
 
     ),

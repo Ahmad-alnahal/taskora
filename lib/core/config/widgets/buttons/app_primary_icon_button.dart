@@ -27,9 +27,11 @@ class AppPrimaryIconButton extends StatelessWidget {
       isLoading: isLoading,
       backgroundColor:buttonColor != null ? buttonColor!: ColorManager.secondaryColor,
       foregroundColor: buttonColor != null ? ColorManager.secondaryColor: Colors.white,
-      borderColor: buttonColor != null ? ColorManager.notActiveColor : null,
+      borderColor: buttonColor != null ? Color(0xFFE6E6E6) : null,
       child: Row(
+        spacing: 2,
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(text),
           if (icon != null) ...[

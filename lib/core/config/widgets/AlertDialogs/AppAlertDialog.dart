@@ -80,7 +80,9 @@ class AppAlertDialog extends StatelessWidget {
                 Text(
                   message,
                   textAlign: TextAlign.center,
-                  style: AppTextTheme.lightTextTheme.bodyLarge,
+                  style: AppTextTheme.lightTextTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.w600
+                  ),
                 ),
               const SizedBox(height: SizedBoxSizes.sizedBoxLargeHeight),
                 Row(

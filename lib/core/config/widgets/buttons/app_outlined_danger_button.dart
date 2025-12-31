@@ -15,8 +15,6 @@ class AppOutlinedDangerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppButtonBase(
-      padding: EdgeInsets.symmetric(horizontal: 60),
-      fullWidth: false,
       onPressed: onPressed,
       backgroundColor: Colors.transparent,
       foregroundColor: ColorManager.priorityHighColor,
