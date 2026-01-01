@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import '../../constants/image_path.dart';
 
-enum AppLogoVariant { splash, auth, custom }
+enum AppLogoTypes { splash, auth, custom }
 
 class AppLogo extends StatelessWidget {
   const AppLogo.splash({super.key})
-      : variant = AppLogoVariant.splash,
+      : types = AppLogoTypes.splash,
         size = null;
 
   const AppLogo.auth({super.key})
-      : variant = AppLogoVariant.auth,
+      : types = AppLogoTypes.auth,
         size = null;
 
   const AppLogo.custom({super.key, required this.size})
-      : variant = AppLogoVariant.custom;
+      : types = AppLogoTypes.custom;
 
-  final AppLogoVariant variant;
+  final AppLogoTypes types;
   final double? size;
 
   double _resolvedSize() {
-    switch (variant) {
-      case AppLogoVariant.splash:
+    switch (types) {
+      case AppLogoTypes.splash:
         return 379;
-      case AppLogoVariant.auth:
+      case AppLogoTypes.auth:
         return 226;
-      case AppLogoVariant.custom:
+      case AppLogoTypes.custom:
         return size!;
     }
   }
