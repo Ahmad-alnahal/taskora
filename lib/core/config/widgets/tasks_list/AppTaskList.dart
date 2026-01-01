@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
-
-import '../../../theme/app_text_theme.dart';
 import '../../constants/app_sizes.dart';
 import '../status_badge/AppStatusBadge.dart';
 
@@ -11,8 +9,8 @@ class AppTaskList extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.stateBadge,
-    this.sideColor = const Color(0xFF6C63FF), // الشريط البنفسجي يمين
-    this.backgroundColor = const Color(0xFFEAF6F4), // mint
+    this.sideColor = const Color(0xFF6C63FF),
+    this.backgroundColor = const Color(0xFFEAF6F4),
     this.onTap,
   });
 
@@ -52,37 +50,51 @@ class AppTaskList extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      maxLines: 1,
-                      textAlign: TextAlign.right,
-                      style:Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      subtitle,
-                      maxLines: 1,
-                      textAlign: TextAlign.right,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: ColorManager.notActiveColor,
-                        height: 1.1,
-                      ),
-                    ),
-                  ],
-                ),
-                AppStatusBadge.state(state: stateBadge),
-              ],
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Padding(
+                padding:
+                  AppPadding.paddingH20_V10,
+                   child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     mainAxisSize: MainAxisSize.max,
+                     mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                        Flexible(
+                          child: Text(
+                            title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: false,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                        Flexible(
+                          child: Text(
+                            subtitle,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: false,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: ColorManager.notActiveColor,
+                              height: 1,
+                            ),
+                          ),
+                        ),
+                     ],
+                  ),
+              ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.paddingHorizontal),
+              child: AppStatusBadge.state(state: stateBadge),
+            ),
+            ],
+           ),
           ],
         ),
       ),

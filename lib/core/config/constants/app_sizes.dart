@@ -7,6 +7,7 @@ class AppPadding {
   static const EdgeInsets paddingAll16 = EdgeInsets.all(16);
   static const EdgeInsets paddingAll50 = EdgeInsets.all(50);
   static const EdgeInsets paddingH12_V6 =  EdgeInsets.symmetric(horizontal: 12,vertical: 6);
+  static const EdgeInsets paddingH20_V10 =  EdgeInsets.symmetric(horizontal: 20, vertical: 10);
 }
 class AppButtonsSizes {
   AppButtonsSizes._();
