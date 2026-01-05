@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
 import '../../../../core/config/constants/app_sizes.dart';
 import '../../../../core/config/widgets/buttons/app_primary_icon_button.dart';
+import '../../../core/config/constants/app_strings.dart';
 import '../../../core/config/constants/image_path.dart';
 import '../../../core/theme/app_text_theme.dart';
 import '../bloc/onboarding_bloc.dart';
@@ -15,25 +16,21 @@ class OnboardingPage extends StatelessWidget {
 
   static const items = <OnboardingItem>[
     OnboardingItem(
-      /// لم يتم اعتماد النصوص في ملف النصوص حتى التاكد من انها هي التي سيتم العمل بها !!!
       imageAsset: ImagePath.onboarding1,
-      title: "إدارة مشاريعك بكل سهولة ووضوح",
-      description:
-      "أنشئ مشاريعك، حدّد تفاصيلها، وتابع تقدّمك خطوة بخطوة من مكان واحد مصمّم خصيصًا للمستقلّين.",
+      title: OnboardingStrings.onboardingTitle1,
+      description:OnboardingStrings.onboardingSubTitle1,
     ),
     OnboardingItem(
 
       imageAsset:  ImagePath.onboarding2,
-      title: "نظّم مهامك وابقَ على المسار الصحيح",
-      description:
-      "أضف مهام لكل مشروع، حدّد أولوياتها، وتتبع حالة كل مهمة من ToDo حتى Done بسهولة وبساطة.",
+      title: OnboardingStrings.onboardingTitle2,
+      description:OnboardingStrings.onboardingSubTitle2,
     ),
     OnboardingItem(
 
       imageAsset:  ImagePath.onboarding3,
-      title: "اعرف أرباحك الحقيقية فوراً",
-      description:
-      "يحسب التطبيق ساعات عملك تلقائيًا ويعرض أرباحك لكل مستقل ولكل مهمة أو مشروع بدقة وشفافية.",
+      title: OnboardingStrings.onboardingTitle3,
+      description:OnboardingStrings.onboardingSubTitle3,
     ),
   ];
 
@@ -59,7 +56,7 @@ class _OnboardingView extends StatelessWidget {
         listenWhen: (p, c) => p.finished != c.finished,
         listener: (context, state) {
           if (state.finished) {
-            // Navigator.pushReplacementNamed(context, '/login');
+            Navigator.pushReplacementNamed(context, '/login');
           }
         },
         child: BlocBuilder<OnboardingBloc, OnboardingState>(
