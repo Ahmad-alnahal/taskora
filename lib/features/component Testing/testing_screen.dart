@@ -28,7 +28,7 @@ import '../../core/config/widgets/text_fields/app_text_field.dart';
 
 class TestingScreen extends StatelessWidget {
   const TestingScreen({super.key});
-
+/// هنا تعرض كل ما تم العمل عليه في التاسك الاول
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,6 +67,7 @@ class TestingScreen extends StatelessWidget {
                           foregroundColor: ColorManager.primaryColor,
                           child: Text('show AppAlertDialog'),
                         ),
+                        /// مشكلة واجهتني في المحاكي بتعرضه للتوقف بشكل دائم ومفاجئ!!!
                       ),
                       ///AppButtonBase.Loading
                       TestingContainer(
@@ -192,7 +193,7 @@ class TestingScreen extends StatelessWidget {
                       TestingContainer(
                           title: 'CircularProgressCard',
                           widget: CircularProgressCard(
-                            value: 90,
+                            value: 80,
                           )
                       ),
                       /// CustomInfoCard  /  info

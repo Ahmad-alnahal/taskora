@@ -15,7 +15,7 @@ class OnboardingPage extends StatelessWidget {
 
   static const items = <OnboardingItem>[
     OnboardingItem(
-
+      /// لم يتم اعتماد النصوص في ملف النصوص حتى التاكد من انها هي التي سيتم العمل بها !!!
       imageAsset: ImagePath.onboarding1,
       title: "إدارة مشاريعك بكل سهولة ووضوح",
       description:
