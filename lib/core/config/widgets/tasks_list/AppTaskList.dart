@@ -90,7 +90,7 @@ class AppTaskList extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppPadding.paddingHorizontal),
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.padding16),
               child: AppStatusBadge.state(state: stateBadge),
             ),
             ],

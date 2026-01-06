@@ -1,8 +1,9 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:taskora/core/theme/light_theme.dart';
 import '../../constants/app_sizes.dart';
-
-
+import '../../constants/color_manager.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -20,49 +21,30 @@ class AppTextField extends StatefulWidget {
     this.minLines,
     this.inputFormatters,
     this.initialValue,
-
-    // Icons
     this.suffixIcon,
     this.prefixIcon,
-
-    // Password
     this.isPassword = false,
     this.enablePasswordToggle = true,
-
-    // Optional overrides
     this.fillColor,
   });
 
-
   final String label;
-
   final String hint;
-
   final TextEditingController? controller;
   final String? initialValue;
-
   final ValueChanged<String>? onChanged;
   final FormFieldValidator<String>? validator;
-
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
-
-
   final bool enabled;
   final bool readOnly;
-
   final int maxLines;
   final int? minLines;
-
   final List<TextInputFormatter>? inputFormatters;
-
-
   final Widget? suffixIcon;
   final Widget? prefixIcon;
-
   final bool isPassword;
   final bool enablePasswordToggle;
-
   final Color? fillColor;
 
   @override
@@ -71,22 +53,59 @@ class AppTextField extends StatefulWidget {
 
 class _AppTextFieldState extends State<AppTextField> {
   bool _obscure = true;
+  Timer? _debounce;
+  Color? _borderColor;
+  final _focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
     _obscure = widget.isPassword;
+    _focusNode.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    if (!_focusNode.hasFocus) {
+      _validate(widget.controller?.text ?? '');
+    }
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _onChanged(String value) {
+
+
+    if (_debounce?.isActive ?? false) _debounce?.cancel();
+    _debounce = Timer(const Duration(seconds: 2), () {
+      _validate(value);
+    });
+
+    widget.onChanged?.call(value);
+  }
+
+  void _validate(String value) {
+    if (widget.validator != null) {
+      final error = widget.validator!(value);
+      setState(() {
+        if (error != null) {
+          _borderColor = Colors.red;
+        } else {
+          _borderColor = Colors.green;
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    final labelStyle = theme.textTheme.titleMedium;
-
-    final hintStyle = theme.textTheme.bodyMedium;
-
-
+    final labelStyle = lightTheme.textTheme.titleMedium;
+    final hintStyle = lightTheme.textTheme.bodyMedium;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,8 +115,9 @@ class _AppTextFieldState extends State<AppTextField> {
         TextFormField(
           controller: widget.controller,
           initialValue: widget.controller == null ? widget.initialValue : null,
-          onChanged: widget.onChanged,
+          onChanged: _onChanged,
           validator: widget.validator,
+          focusNode: _focusNode,
           keyboardType: widget.keyboardType,
           textInputAction: widget.textInputAction,
           enabled: widget.enabled,
@@ -111,6 +131,23 @@ class _AppTextFieldState extends State<AppTextField> {
             hintStyle: hintStyle,
             suffixIcon: widget.suffixIcon,
             prefixIcon: widget.prefixIcon,
+            errorMaxLines: 2,
+            errorStyle: const TextStyle(
+              fontSize: 12,
+              height: 1.2,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: _borderColor ?? ColorManager.dividerColor),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: _borderColor ?? Colors.green),
+            ),
+            errorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
+            focusedErrorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
           ),
         ),
       ],

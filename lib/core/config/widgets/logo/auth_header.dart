@@ -15,7 +15,7 @@ class AuthHeader extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return SizedBox(
-      height: 320,
+      height: 250,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [

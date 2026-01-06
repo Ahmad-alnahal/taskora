@@ -5,6 +5,7 @@ import '../../../../core/config/constants/app_sizes.dart';
 import '../../../../core/config/widgets/buttons/app_primary_icon_button.dart';
 import '../../../core/config/constants/app_strings.dart';
 import '../../../core/config/constants/image_path.dart';
+import '../../../core/router/routers_name.dart';
 import '../../../core/theme/app_text_theme.dart';
 import '../bloc/onboarding_bloc.dart';
 import '../bloc/onboarding_event.dart';
@@ -56,7 +57,7 @@ class _OnboardingView extends StatelessWidget {
         listenWhen: (p, c) => p.finished != c.finished,
         listener: (context, state) {
           if (state.finished) {
-            Navigator.pushReplacementNamed(context, '/login');
+            Navigator.pushNamedAndRemoveUntil(context, AppRoutersName.login, (route) => false);
           }
         },
         child: BlocBuilder<OnboardingBloc, OnboardingState>(
@@ -103,7 +104,7 @@ class _OnboardingView extends StatelessWidget {
                 ),  
                 const SizedBox(height:SizedBoxSizes.sizedBoxXLargeHeight),
                 Padding(
-                  padding:  const EdgeInsets.symmetric(horizontal: AppPadding.paddingHorizontal),
+                  padding:  const EdgeInsets.symmetric(horizontal: AppPadding.padding16),
                   child: Column(children: [
 
                     AnimatedSwitcher(

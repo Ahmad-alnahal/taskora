@@ -13,7 +13,7 @@ class CustomInfoCard extends StatelessWidget {
     required this.description,
     this.type = CustomInfoCardType.info,
     this.onTap,
-    this.margin = const EdgeInsets.symmetric(horizontal: AppPadding.paddingHorizontal),
+    this.margin = const EdgeInsets.symmetric(horizontal: AppPadding.padding16),
   });
 
   final String title;

@@ -9,7 +9,22 @@ class AppStrings {
 class LoginStrings{
   LoginStrings._();
   static const String loginApp = "تسجيل دخول للتطبيق";
+  static const String login= "تسجيل الدخول";
   static const String welcomeToLoginApp = "يسعدنا رؤيتك من جديد، سجل الدخول للبدء الآن";
+  static const String email = 'البريد الإلكتروني';
+  static const String enterEmail = 'أدخل بريدك الإلكتروني';
+  static const String password = 'كلمة المرور';
+  static const String enterPassword = 'أدخل كلمة المرور';
+  static const String forgetPassword = 'هل نسيت كلمة المرور؟';
+  static const String doNotHaveAccount = 'لا يوجد لديك حساب؟';
+  static const String createAccount = 'قم بانشاء حساب';
+  static const String invalidEmail = '👎 البريد الإلكتروني غير صحيح';
+  static const String invalidPassword = '👎 كلمة المرور غير صحيحة';
+
+
+
+
+
 }
 class OnboardingStrings{
   OnboardingStrings._();

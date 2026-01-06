@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/di/service_locator.dart';
+import '../../../core/services/local/shared_pref_service.dart';
 import 'onboarding_event.dart';
 import 'onboarding_state.dart';
 
@@ -21,7 +23,8 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       }
     });
 
-    on<OnboardingFinishPressed>((event, emit) {
+    on<OnboardingFinishPressed>((event, emit) async {
+      await sl<SharedPrefService>().setSeenOnboarding();
       emit(state.copyWith(finished: true));
     });
   }

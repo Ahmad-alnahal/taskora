@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 class AppPadding {
   AppPadding._();
-  static const double paddingHorizontal = 16;
+  static const double padding16 = 16;
   static const EdgeInsets paddingAll10 = EdgeInsets.all(10);
   static const EdgeInsets paddingAll16 = EdgeInsets.all(16);
   static const EdgeInsets paddingAll50 = EdgeInsets.all(50);
   static const EdgeInsets paddingH12_V6 =  EdgeInsets.symmetric(horizontal: 12,vertical: 6);
   static const EdgeInsets paddingH20_V10 =  EdgeInsets.symmetric(horizontal: 20, vertical: 10);
+  static const EdgeInsets paddingH25 =  EdgeInsets.symmetric(horizontal: 25);
 }
 class AppButtonsSizes {
   AppButtonsSizes._();
