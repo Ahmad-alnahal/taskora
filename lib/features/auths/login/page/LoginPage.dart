@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taskora/core/config/constants/app_sizes.dart';
+import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/constants/color_manager.dart';
-import '../../../core/config/constants/app_sizes.dart';
-import '../../../core/config/constants/app_strings.dart';
-import '../../../core/config/widgets/Texts/clickable text.dart';
-import '../../../core/config/widgets/buttons/app_primary_icon_button.dart';
-import '../../../core/config/widgets/logo/auth_header.dart';
-import '../../../core/config/widgets/text_fields/app_text_field.dart';
+import 'package:taskora/core/config/widgets/Texts/clickable%20text.dart';
+import 'package:taskora/core/config/widgets/buttons/app_primary_icon_button.dart';
+import 'package:taskora/core/config/widgets/logo/auth_header.dart';
+import 'package:taskora/core/config/widgets/text_fields/app_text_field.dart';
 import '../bloc/login_bloc.dart';
 import '../bloc/login_event.dart';
 import '../bloc/login_state.dart';

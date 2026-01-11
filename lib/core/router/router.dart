@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/Onboarding/pages/onboarding_page.dart';
-import '../../features/login/page/LoginPage.dart';
+import 'package:taskora/features/auths/login/page/LoginPage.dart';
 
 
 class AppRoutes {
