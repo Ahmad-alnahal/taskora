@@ -7,6 +7,7 @@ import 'package:taskora/core/config/widgets/Texts/clickable%20text.dart';
 import 'package:taskora/core/config/widgets/buttons/app_primary_icon_button.dart';
 import 'package:taskora/core/config/widgets/logo/auth_header.dart';
 import 'package:taskora/core/config/widgets/text_fields/app_text_field.dart';
+import 'package:taskora/core/router/routers_name.dart';
 import '../bloc/login_bloc.dart';
 import '../bloc/login_event.dart';
 import '../bloc/login_state.dart';
@@ -146,7 +147,9 @@ class _LoginBodyState extends State<_LoginBody> {
                             ),
                           ),
                           ClickableText(
-                            onTap: (){},
+                            onTap: (){
+                              Navigator.pushNamed(context, AppRoutersName.signup);
+                            },
                             text: LoginStrings.createAccount,
                             padding: EdgeInsetsGeometry.zero,
                             textStyle: TextStyle(

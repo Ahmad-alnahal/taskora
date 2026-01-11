@@ -20,12 +20,35 @@ class LoginStrings{
   static const String createAccount = 'قم بانشاء حساب';
   static const String invalidEmail = '👎 البريد الإلكتروني غير صحيح';
   static const String invalidPassword = '👎 كلمة المرور غير صحيحة';
-
-
-
-
-
 }
+class SignupStrings {
+  SignupStrings._();
+  static const name = 'اسم المستخدم';
+  static const enterName = 'ادخل اسمك بالكامل';
+  static const invalidName = 'اسم غير صالح';
+  static const email = 'البريد الإلكتروني';
+  static const enterEmail = 'ادخل بريدك الإلكتروني';
+  static const invalidEmail = 'بريد غير صالح';
+  static const password = 'كلمة المرور';
+  static const enterPassword = 'ادخل كلمة المرور';
+  static const invalidPassword = 'كلمة المرور غير صالحة';
+  static const confirmPassword = 'تأكيد كلمة المرور';
+  static const enterConfirmPassword = 'ادخل كلمة المرور';
+  static const invalidConfirmPassword = 'تأكيد كلمة المرور غير صالح';
+  static const passwordNotMatch = 'كلمتا المرور غير متطابقتين';
+  static const hourRate = 'سعر الساعة';
+  static const enterHourRate = 'ادخل سعر الساعة';
+  static const invalidHourRate = 'سعر الساعة غير صالح';
+  static const hourRateNote ='سيتم حفظ هذا السعر في ملفك الشخصي واستخدامه كقيمة افتراضية عند إنشاء المشاريع';
+  static const createAccount = 'إنشاء الحساب';
+  static const haveAccount = 'هل يوجد لديك حساب؟ ';
+  static const login = 'قم بتسجيل الدخول';
+  static const termsNote1 = ' بإنشاء حساب، فإنك توافق على';
+  static const termsNote2 = ' شروط الخدمة و سياسة الخصوصية';
+  static const signupApp = 'إنشاء حساب';
+  static const welcomeToSignupApp ='قم بتعبئة بياناتك كي تتمكن من انشاء حساب داخل التطبيق ووتتمع بجميع المميزات بعد انشاء الحساب';
+}
+
 class OnboardingStrings{
   OnboardingStrings._();
   static const String onboardingTitle1 = "إدارة مشاريعك بكل سهولة ووضوح";

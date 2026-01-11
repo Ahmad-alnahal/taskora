@@ -104,13 +104,10 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final labelStyle = lightTheme.textTheme.titleMedium;
-    final hintStyle = lightTheme.textTheme.bodyMedium;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.label, style: labelStyle),
+        Text(widget.label, style:TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
         const SizedBox(height: SizedBoxSizes.sizedBoxSmallHeight),
         TextFormField(
           controller: widget.controller,
@@ -128,7 +125,7 @@ class _AppTextFieldState extends State<AppTextField> {
           inputFormatters: widget.inputFormatters,
           decoration: InputDecoration(
             hintText: widget.hint,
-            hintStyle: hintStyle,
+            hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400,color: ColorManager.notActiveColor,),
             suffixIcon: widget.suffixIcon,
             prefixIcon: widget.prefixIcon,
             errorMaxLines: 2,
@@ -137,15 +134,19 @@ class _AppTextFieldState extends State<AppTextField> {
               height: 1.2,
             ),
             enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(color: _borderColor ?? ColorManager.dividerColor),
             ),
             focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(color: _borderColor ?? Colors.green),
             ),
-            errorBorder: const OutlineInputBorder(
+            errorBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(color: Colors.red),
             ),
-            focusedErrorBorder: const OutlineInputBorder(
+            focusedErrorBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(color: Colors.red),
             ),
           ),
