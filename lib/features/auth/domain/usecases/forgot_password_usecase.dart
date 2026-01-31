@@ -1,3 +1,4 @@
+import '../entities/forgot_password_result.dart';
 import '../repositories/auth_repository.dart';
 
 class ForgotPasswordUseCase {

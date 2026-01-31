@@ -1,15 +1,5 @@
 import '../entities/auth_token.dart';
-
-class ForgotPasswordResult {
-  final String email;
-  final String code; // training mode => "1234"
-  final String message;
-  const ForgotPasswordResult({
-    required this.email,
-    required this.code,
-    required this.message,
-  });
-}
+import '../entities/forgot_password_result.dart';
 
 abstract class AuthRepository {
   Future<AuthToken> login({required String email, required String password});

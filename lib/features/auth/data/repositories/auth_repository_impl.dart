@@ -1,4 +1,5 @@
 import '../../domain/entities/auth_token.dart';
+import '../../domain/entities/forgot_password_result.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_local_datasource.dart';
 import '../datasources/auth_remote_datasource.dart';
