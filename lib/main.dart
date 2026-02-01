@@ -6,7 +6,6 @@ import 'core/services/local/shared_pref_service.dart';
 import 'core/theme/light_theme.dart' as LightTheme;
 import 'features/Onboarding/pages/onboarding_page.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
