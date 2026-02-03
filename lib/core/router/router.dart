@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/Onboarding/pages/onboarding_page.dart';
-import 'package:taskora/features/auths/login/page/login_page.dart';
-import 'package:taskora/features/auths/signup/page/signup_page.dart';
-
+import 'package:taskora/features/auth/presentation/pages/login_page.dart';
+import 'package:taskora/features/auth/presentation/pages/signup_page.dart';
+import 'package:taskora/features/auth/presentation/pages/auth_gate_page.dart';
+import 'package:taskora/features/main_nav/pages/main_page.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -17,6 +18,13 @@ class AppRoutes {
 
         case AppRoutersName.signup:
         return MaterialPageRoute(builder: (_) => const SignupPage());
+
+      case AppRoutersName.authGate:
+        return MaterialPageRoute(builder: (_) => const AuthGatePage());
+
+      case AppRoutersName.mainPage:
+        return MaterialPageRoute(builder: (_) => const MainPage());
+
 
       default:
         return MaterialPageRoute(
