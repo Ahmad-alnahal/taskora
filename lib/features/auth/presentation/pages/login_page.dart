@@ -24,8 +24,6 @@ class _LoginPageState extends State<LoginPage> {
   final _emailCtrl = TextEditingController();
   final _passwordCtrl = TextEditingController();
 
-  bool _serverInvalid = false;
-
   @override
   void dispose() {
     _emailCtrl.dispose();
@@ -33,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _revalidate() {
+  void _validateNow() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _formKey.currentState?.validate();
     });
@@ -41,136 +39,159 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
+    return BlocConsumer<AuthBloc, AuthState>(
       listenWhen: (prev, curr) => curr is AuthError || curr is Authenticated,
       listener: (context, state) {
         if (state is AuthError) {
-          _serverInvalid = true;
-          _revalidate();
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
+          _validateNow();
+          final hasFieldErrors =
+              state.emailError != null || state.passwordError != null;
+          if (!hasFieldErrors) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message ?? 'unknown error in login')),
+            );
+          }
         }
-
         if (state is Authenticated) {
-          // Navigator.pushReplacementNamed(context, AppRoutersName.mainNav);
+           Navigator.pushReplacementNamed(context, AppRoutersName.mainPage);
         }
       },
-      child: BlocBuilder<AuthBloc, AuthState>(
-        buildWhen: (prev, curr) => curr is AuthLoading || curr is! AuthLoading,
-        builder: (context, state) {
-          final isLoading = state is AuthLoading;
+      // buildWhen: (prev, curr) => prev.runtimeType != curr.runtimeType,
+      builder: (context, state) {
+        final isLoading = state is AuthLoading;
+        final serverEmailError =
+        state is AuthError ? state.emailError : null;
+        final serverPasswordError =
+        state is AuthError ? state.passwordError : null;
 
-          return Scaffold(
-            body: SafeArea(
-              child: SingleChildScrollView(
-                padding: AppPadding.paddingH25,
-                child: Form(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      AuthHeader(),
-                      const SizedBox(height: AppPadding.padding16),
+        return Scaffold(
+          body: SafeArea(
+            child: SingleChildScrollView(
+              padding: AppPadding.paddingH25,
+              child: Form(
+                key: _formKey,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    AuthHeader(),
+                    const SizedBox(height: AppPadding.padding16),
 
-                      AppTextField(
-                        controller: _emailCtrl,
-                        hint: LoginStrings.enterEmail,
-                        label: LoginStrings.email,
-                        onChanged: (_) => _serverInvalid = false,
-                        validator: (value) {
-                          final v = (value ?? '').trim();
-                          if (!v.contains('@') || !v.contains('.')) {
-                            return LoginStrings.invalidEmail;
-                          }
-                          if (_serverInvalid) return LoginStrings.invalidEmail;
-                          return null;
-                        },
-                      ),
+                    AppTextField(
+                      controller: _emailCtrl,
+                      hint: AuthStrings.enterEmail,
+                      label: AuthStrings.email,
+                      onChanged: (_) {
+                        final s = context.read<AuthBloc>().state;
+                        if (s is AuthError) {
+                          context.read<AuthBloc>().add(const ClearAuthErrorsEvent());
+                        }
+                      },
+                      validator: (value) {
+                        final v = (value ?? '').trim();
+                        if (!v.contains('@') || !v.contains('.')) {
+                          return AuthStrings.invalidEmail;
+                        }
+                        if (serverEmailError != null) return serverEmailError;
+                        return null;
+                      },
+                    ),
 
-                      const SizedBox(height: AppPadding.padding16),
+                    const SizedBox(height: AppPadding.padding16),
 
-                      AppTextField(
-                        controller: _passwordCtrl,
-                        hint: LoginStrings.enterPassword,
-                        label: LoginStrings.password,
-                        isPassword: true,
-                        onChanged: (_) => _serverInvalid = false,
-                        validator: (value) {
-                          final v = (value ?? '');
-                          if (v.length < 8) return LoginStrings.invalidPassword;
-                          if (_serverInvalid) return LoginStrings.invalidPassword;
-                          return null;
-                        },
-                      ),
+                    AppTextField(
+                      controller: _passwordCtrl,
+                      hint: AuthStrings.enterPassword,
+                      label: AuthStrings.password,
+                      onChanged: (_) {
+                        final s = context.read<AuthBloc>().state;
+                        if (s is AuthError) {
+                          context.read<AuthBloc>().add(const ClearAuthErrorsEvent());
+                        }
+                      },
 
-                      const SizedBox(height: AppPadding.padding16),
+                      isPassword: true,
+                      validator: (value) {
+                        final v = (value ?? '');
+                        if (v.length < 8) return AuthStrings.invalidPassword;
+                        if (serverPasswordError != null) {
+                          return serverPasswordError;
+                        }
+                        return null;
+                      },
+                    ),
 
-                      Row(
-                        children: [
-                          const Spacer(),
-                          ClickableText(
-                            onTap: () {
-                              // لاحقًا: dispatch ForgotPasswordEvent
-                            },
-                            text: LoginStrings.forgetPassword,
-                            padding: EdgeInsetsGeometry.zero,
+                    const SizedBox(height: AppPadding.padding16),
+
+                    Row(
+                      children: [
+                        const Spacer(),
+                        ClickableText(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            AppRoutersName.forgotPassword,
                           ),
-                        ],
-                      ),
+                          text: LoginStrings.forgetPassword,
+                          padding: EdgeInsetsGeometry.zero,
+                        ),
+                      ],
+                    ),
 
-                      const SizedBox(height: AppPadding.padding16),
+                    const SizedBox(height: AppPadding.padding16),
 
-                      AppPrimaryIconButton(
-                        text: LoginStrings.login,
-                        isLoading: isLoading,
-                        onPressed: isLoading
-                            ? null
-                            : () {
-                          final ok = _formKey.currentState?.validate() ?? false;
-                          if (!ok) return;
+                    AppPrimaryIconButton(
+                      text: LoginStrings.login,
+                      isLoading: isLoading,
+                      onPressed: isLoading
+                          ? null
+                          : () {
+                        final ok =
+                            _formKey.currentState?.validate() ?? false;
+                        if (!ok) return;
 
-                          context.read<AuthBloc>().add(
-                            LoginEvent(
-                              email: _emailCtrl.text.trim(),
-                              password: _passwordCtrl.text,
-                            ),
-                          );
-                        },
-                      ),
-
-                      const SizedBox(height: AppPadding.padding16),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            LoginStrings.doNotHaveAccount,
-                            style: TextStyle(
-                              color: ColorManager.secondary500,
-                              fontSize: 11,
-                            ),
+                        context.read<AuthBloc>().add(
+                          LoginEvent(
+                            email: _emailCtrl.text.trim(),
+                            password: _passwordCtrl.text,
                           ),
-                          ClickableText(
-                            onTap: () => Navigator.pushNamed(context, AppRoutersName.signup),
-                            text: LoginStrings.createAccount,
-                            padding: EdgeInsetsGeometry.zero,
-                            textStyle: TextStyle(
-                              color: ColorManager.primaryColor,
-                              fontSize: 11,
-                            ),
+                        );
+                      },
+                    ),
+
+                    const SizedBox(height: AppPadding.padding16),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          LoginStrings.doNotHaveAccount,
+                          style: TextStyle(
+                            color: ColorManager.secondary500,
+                            fontSize: 11,
                           ),
-                        ],
-                      )
-                    ],
-                  ),
+                        ),
+                        ClickableText(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            AppRoutersName.signup,
+                          ),
+                          text: LoginStrings.createAccount,
+                          padding: EdgeInsetsGeometry.zero,
+                          textStyle: TextStyle(
+                            color: ColorManager.primaryColor,
+                            fontSize: 11,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
+
