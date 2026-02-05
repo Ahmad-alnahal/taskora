@@ -5,5 +5,7 @@ class AppRoutersName{
   static const String signup = '/signup';
   static const String authGate = '/auth-gate';
   static const String mainPage = '/main_page';
+  static const String forgotPassword = '/forgot_password';
+  static const String verifyResetCode = '/verify_reset_code';
 
 }

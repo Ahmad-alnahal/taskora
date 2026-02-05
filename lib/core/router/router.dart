@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/Onboarding/pages/onboarding_page.dart';
+import 'package:taskora/features/auth/presentation/pages/forgot_password_page.dart';
 import 'package:taskora/features/auth/presentation/pages/login_page.dart';
 import 'package:taskora/features/auth/presentation/pages/signup_page.dart';
 import 'package:taskora/features/auth/presentation/pages/auth_gate_page.dart';
+import 'package:taskora/features/auth/presentation/pages/verify_reset_code_page.dart';
 import 'package:taskora/features/main_nav/pages/main_page.dart';
 
 class AppRoutes {
@@ -24,6 +26,16 @@ class AppRoutes {
 
       case AppRoutersName.mainPage:
         return MaterialPageRoute(builder: (_) => const MainPage());
+
+        case AppRoutersName.forgotPassword:
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordPage());
+
+      case AppRoutersName.verifyResetCode:
+        final email = settings.arguments as String;
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => VerifyResetCodePage(email: email),
+        );
 
 
       default:
