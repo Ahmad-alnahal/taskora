@@ -5,32 +5,29 @@ class AppStrings {
   static const String appName = 'Taskora';
 
 }
-
+class AuthStrings{
+  static const String email = 'البريد الإلكتروني';
+  static const String enterEmail = 'أدخل بريدك الإلكتروني';
+  static const String password = 'كلمة المرور';
+  static const String enterPassword = 'أدخل كلمة المرور';
+  static const String invalidEmail = '👎 البريد الإلكتروني غير صحيح';
+  static const String invalidPassword = '👎 كلمة المرور غير صحيحة';
+}
 class LoginStrings{
   LoginStrings._();
   static const String loginApp = "تسجيل دخول للتطبيق";
   static const String login= "تسجيل الدخول";
   static const String welcomeToLoginApp = "يسعدنا رؤيتك من جديد، سجل الدخول للبدء الآن";
-  static const String email = 'البريد الإلكتروني';
-  static const String enterEmail = 'أدخل بريدك الإلكتروني';
-  static const String password = 'كلمة المرور';
-  static const String enterPassword = 'أدخل كلمة المرور';
   static const String forgetPassword = 'هل نسيت كلمة المرور؟';
   static const String doNotHaveAccount = 'لا يوجد لديك حساب؟';
   static const String createAccount = 'قم بانشاء حساب';
-  static const String invalidEmail = '👎 البريد الإلكتروني غير صحيح';
-  static const String invalidPassword = '👎 كلمة المرور غير صحيحة';
 }
 class SignupStrings {
   SignupStrings._();
   static const name = 'اسم المستخدم';
   static const enterName = 'ادخل اسمك بالكامل';
   static const invalidName = 'اسم غير صالح';
-  static const email = 'البريد الإلكتروني';
-  static const enterEmail = 'ادخل بريدك الإلكتروني';
   static const invalidEmail = 'بريد غير صالح';
-  static const password = 'كلمة المرور';
-  static const enterPassword = 'ادخل كلمة المرور';
   static const invalidPassword = 'كلمة المرور غير صالحة';
   static const confirmPassword = 'تأكيد كلمة المرور';
   static const enterConfirmPassword = 'ادخل كلمة المرور';
@@ -93,5 +90,19 @@ class AppBottomSheetStrings{
   static const String unexpectedError =  'حدث خطأ غير متوقع';
   static const String uncompletedProcessTryAgain =  'لم نتمكن من إكمال العملية، يرجى المحاولة مرة أخرى.';
   static const String emptyStateMessage =  "ولا شي هون لسه!\n واضح إنك ما عملت أي إجراء لحد الآن. خلينا نبدأ الرحلة سوا.\n هاي الصفحة فاضية لأنك ما ضفت ولا عنصر.";
+
+}
+class ForgotPasswordStrings{
+  static const String plzEnterEmail = 'يرجى إدخال بريدك الإلكتروني لإرسال الكود';
+  static const String send = 'أرسل';
+}
+class  VerifyPasswordStrings{
+  static const String activationCode = 'كود التفعيل';
+  static const String codeSended = 'تم إرسال رمز تفعيل للحساب على الايميل المرفق أدناه';
+  static const String followUp = 'المتابعة';
+  static const String didNotReceiveCode = 'لم تستلم رمز التفعيل؟ ';
+  static const String resend = 'إعادة الإرسال';
+  static const String codeExpireIn = 'ستنتهي صلاحية الرمز بعد';
+  static const String conNotBeSendWait = 'لا يمكن إعادة الإرسال الآن، انتظر ';
 
 }
