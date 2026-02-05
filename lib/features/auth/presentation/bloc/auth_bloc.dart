@@ -29,6 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<VerifyResetCodeEvent>(_onVerifyCode, transformer: droppable());
     on<ResetPasswordEvent>(_onResetPassword, transformer: droppable());
     on<LogoutEvent>(_onLogout, transformer: droppable());
+    on<ClearAuthErrorsEvent>((event, emit) => emit(Unauthenticated()));
   }
 
   final LoginUseCase login;
@@ -109,7 +110,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       await action();
     } catch (e) {
-      emit(AuthError(e.userMessage));
+      emit(AuthError(message:e.userMessage));
     }
   }
 }

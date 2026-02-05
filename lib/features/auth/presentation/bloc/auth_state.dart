@@ -11,10 +11,12 @@ class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 
 class AuthError extends AuthState {
-  final String message;
-  const AuthError(this.message);
+  final String? message;
+  final String? emailError;
+  final String? passwordError;
+  const AuthError( {this.emailError, this.passwordError,this.message});
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [message, emailError, passwordError];
 }
 
 class Unauthenticated extends AuthState {}

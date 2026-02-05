@@ -53,3 +53,7 @@ class ResetPasswordEvent extends AuthEvent {
   @override
   List<Object?> get props => [email, newPassword, confirmPassword];
 }
+class ClearAuthErrorsEvent extends AuthEvent {
+  const ClearAuthErrorsEvent();
+}
+
