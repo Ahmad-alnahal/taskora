@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taskora/core/di/service_locator.dart';
 import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/Onboarding/pages/onboarding_page.dart';
 import 'package:taskora/features/auth/presentation/pages/forgot_password_page.dart';
@@ -7,11 +9,21 @@ import 'package:taskora/features/auth/presentation/pages/signup_page.dart';
 import 'package:taskora/features/auth/presentation/pages/auth_gate_page.dart';
 import 'package:taskora/features/auth/presentation/pages/verify_reset_code_page.dart';
 import 'package:taskora/features/main_nav/pages/main_page.dart';
+import 'package:taskora/features/splash/presentation/bloc/splash_bloc.dart';
+import 'package:taskora/features/splash/presentation/pages/splash_page.dart';
 
 class AppRoutes {
   AppRoutes._();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutersName.splash:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => sl<SplashBloc>(),
+            child: const SplashPage(),
+          ),
+        );
+
       case AppRoutersName.onboarding:
         return MaterialPageRoute(builder: (_) => const OnboardingPage());
 
