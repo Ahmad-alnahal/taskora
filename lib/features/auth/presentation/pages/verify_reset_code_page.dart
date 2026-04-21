@@ -161,7 +161,11 @@ class _VerifyResetCodePageState extends State<VerifyResetCodePage> {
         }
 
         if (state is ResetCodeVerified) {
-          Navigator.pushReplacementNamed(context, AppRoutersName.login);
+          Navigator.pushReplacementNamed(
+            context,
+            AppRoutersName.resetPassword,
+            arguments: widget.email,
+          );
         }
       },
       builder: (context, state) {
