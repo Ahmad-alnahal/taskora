@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:taskora/core/services/remote/dio_client.dart';
 import 'package:taskora/features/auth/data/datasources/auth_local_datasource.dart';
 import 'package:taskora/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:taskora/features/splash/presentation/bloc/splash_bloc.dart';
 import '../services/local/shared_pref_service.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/repositories/auth_repository.dart';
@@ -26,7 +28,8 @@ Future<void> setupServiceLocator() async {
 
   // DataSources
   sl.registerLazySingleton<AuthLocalDataSource>(() => AuthLocalDataSource(sl()));
-  sl.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSource());
+  sl.registerLazySingleton<DioClient>(() => DioClient(sl()));
+  sl.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSource(sl()));
 
   // Repository
   sl.registerLazySingleton<AuthRepository>(
@@ -42,9 +45,9 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton(() => ResetPasswordUseCase(sl()));
   sl.registerLazySingleton(() => GetSavedTokenUseCase(sl()));
 
-  // Bloc
+  // Blocs
   sl.registerFactory(
-        () => AuthBloc(
+    () => AuthBloc(
       login: sl(),
       signup: sl(),
       logout: sl(),
@@ -52,6 +55,13 @@ Future<void> setupServiceLocator() async {
       verifyResetCode: sl(),
       resetPassword: sl(),
       getSavedTokenUseCase: sl(),
+    ),
+  );
+
+  sl.registerFactory(
+    () => SplashBloc(
+      sharedPrefService: sl(),
+      getSavedToken: sl(),
     ),
   );
 }
