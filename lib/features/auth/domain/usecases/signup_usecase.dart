@@ -8,7 +8,13 @@ class SignupUseCase {
     required String name,
     required String email,
     required String password,
+    required double hourlyRate,
   }) {
-    return repo.signup(name: name, email: email, password: password);
+    return repo.signup(
+      name: name,
+      email: email,
+      password: password,
+      hourlyRate: hourlyRate,
+    );
   }
 }
