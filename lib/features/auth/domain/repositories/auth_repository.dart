@@ -8,6 +8,7 @@ abstract class AuthRepository {
     required String name,
     required String email,
     required String password,
+    required double hourlyRate,
   });
 
   Future<ForgotPasswordResult> forgotPassword({required String email});

@@ -11,14 +11,22 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<AuthToken> login({required String email, required String password}) async {
-    final token = await remote.login(email, password);
+    final result    = await remote.login(email, password);
+    final token     = result['token'] as String;
+    final watchCost = result['watchCost'] as double;
     await local.saveToken(token);
-    return AuthToken(token);
+    await local.saveWatchCost(watchCost);
+    return AuthToken(token, watchCost: watchCost);
   }
 
   @override
-  Future<void> signup({required String name, required String email, required String password}) {
-    return remote.signup(name, email, password);
+  Future<void> signup({
+    required String name,
+    required String email,
+    required String password,
+    required double hourlyRate,
+  }) {
+    return remote.signup(name, email, password, hourlyRate);
   }
 
   @override
