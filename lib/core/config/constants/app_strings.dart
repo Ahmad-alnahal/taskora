@@ -10,8 +10,15 @@ class AuthStrings{
   static const String enterEmail = 'أدخل بريدك الإلكتروني';
   static const String password = 'كلمة المرور';
   static const String enterPassword = 'أدخل كلمة المرور';
-  static const String invalidEmail = '👎 البريد الإلكتروني غير صحيح';
-  static const String invalidPassword = '👎 كلمة المرور غير صحيحة';
+  static const String invalidEmail = 'البريد الإلكتروني غير صحيح';
+  static const String emailRequired = 'البريد الإلكتروني مطلوب';
+  static const String emailInvalidFormat = 'صيغة البريد الإلكتروني غير صحيحة';
+  static const String invalidPassword = 'كلمة المرور غير صحيحة';
+  static const String passwordRequired = 'كلمة المرور مطلوبة';
+  static const String passwordTooShort = 'كلمة المرور يجب أن تكون 8 أحرف على الأقل';
+  static const String passwordNeedsUppercase = 'كلمة المرور يجب أن تحتوي على حرف كبير (A-Z)';
+  static const String passwordNeedsLowercase = 'كلمة المرور يجب أن تحتوي على حرف صغير (a-z)';
+  static const String passwordNeedsDigit = 'كلمة المرور يجب أن تحتوي على رقم واحد على الأقل';
 }
 class LoginStrings{
   LoginStrings._();
@@ -26,13 +33,18 @@ class SignupStrings {
   SignupStrings._();
   static const name = 'اسم المستخدم';
   static const enterName = 'ادخل اسمك بالكامل';
+  static const nameRequired = 'الاسم مطلوب';
+  static const nameTooShort = 'الاسم يجب أن يكون 3 أحرف على الأقل';
   static const invalidName = 'اسم غير صالح';
   static const invalidEmail = 'بريد غير صالح';
   static const invalidPassword = 'كلمة المرور غير صالحة';
   static const confirmPassword = 'تأكيد كلمة المرور';
-  static const enterConfirmPassword = 'ادخل كلمة المرور';
+  static const enterConfirmPassword = 'ادخل كلمة المرور مرة أخرى';
+  static const confirmPasswordRequired = 'تأكيد كلمة المرور مطلوب';
   static const invalidConfirmPassword = 'تأكيد كلمة المرور غير صالح';
   static const passwordNotMatch = 'كلمتا المرور غير متطابقتين';
+  static const hourRateRequired = 'سعر الساعة مطلوب';
+  static const hourRateMustBePositive = 'سعر الساعة يجب أن يكون أكبر من صفر';
   static const hourRate = 'سعر الساعة';
   static const enterHourRate = 'ادخل سعر الساعة';
   static const invalidHourRate = 'سعر الساعة غير صالح';
