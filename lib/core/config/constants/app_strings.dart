@@ -116,5 +116,15 @@ class  VerifyPasswordStrings{
   static const String resend = 'إعادة الإرسال';
   static const String codeExpireIn = 'ستنتهي صلاحية الرمز بعد';
   static const String conNotBeSendWait = 'لا يمكن إعادة الإرسال الآن، انتظر ';
+}
 
+class ResetPasswordStrings {
+  static const String title = 'إعادة تعيين كلمة المرور';
+  static const String subtitle = 'أدخل كلمة المرور الجديدة وتأكيدها';
+  static const String newPassword = 'كلمة المرور الجديدة';
+  static const String enterNewPassword = 'أدخل كلمة المرور الجديدة';
+  static const String confirmPassword = 'تأكيد كلمة المرور';
+  static const String enterConfirmPassword = 'أعد إدخال كلمة المرور';
+  static const String save = 'حفظ';
+  static const String successMessage = 'تم تغيير كلمة المرور بنجاح';
 }
