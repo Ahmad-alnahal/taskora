@@ -7,6 +7,7 @@ import 'package:taskora/core/config/widgets/Texts/clickable%20text.dart';
 import 'package:taskora/core/config/widgets/buttons/app_primary_icon_button.dart';
 import 'package:taskora/core/config/widgets/logo/auth_header.dart';
 import 'package:taskora/core/config/widgets/text_fields/app_text_field.dart';
+import 'package:taskora/core/extensions/validation_extension.dart';
 import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:taskora/features/auth/presentation/bloc/auth_event.dart';
@@ -70,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: AppPadding.paddingH25,
               child: Form(
                 key: _formKey,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
+                autovalidateMode: AutovalidateMode.disabled,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -88,10 +89,8 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       },
                       validator: (value) {
-                        final v = (value ?? '').trim();
-                        if (!v.contains('@') || !v.contains('.')) {
-                          return AuthStrings.invalidEmail;
-                        }
+                        final clientError = AppValidators.validateEmail(value);
+                        if (clientError != null) return clientError;
                         if (serverEmailError != null) return serverEmailError;
                         return null;
                       },
@@ -112,11 +111,9 @@ class _LoginPageState extends State<LoginPage> {
 
                       isPassword: true,
                       validator: (value) {
-                        final v = (value ?? '');
-                        if (v.length < 8) return AuthStrings.invalidPassword;
-                        if (serverPasswordError != null) {
-                          return serverPasswordError;
-                        }
+                        final clientError = AppValidators.validatePassword(value);
+                        if (clientError != null) return clientError;
+                        if (serverPasswordError != null) return serverPasswordError;
                         return null;
                       },
                     ),

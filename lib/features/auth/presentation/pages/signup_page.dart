@@ -7,6 +7,7 @@ import 'package:taskora/core/config/constants/app_strings.dart';
 import 'package:taskora/core/config/widgets/Texts/clickable text.dart';
 import 'package:taskora/core/config/widgets/buttons/app_primary_icon_button.dart';
 import 'package:taskora/core/config/widgets/text_fields/app_text_field.dart';
+import 'package:taskora/core/extensions/validation_extension.dart';
 import 'package:taskora/core/router/routers_name.dart';
 import 'package:taskora/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:taskora/features/auth/presentation/bloc/auth_event.dart';
@@ -37,8 +38,6 @@ class _SignupPageState extends State<SignupPage> {
     _hourRateCtrl.dispose();
     super.dispose();
   }
-
-  bool _isValidEmail(String v) => v.contains('@') && v.contains('.');
 
   void _validateNow() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -89,8 +88,8 @@ class _SignupPageState extends State<SignupPage> {
             child: SingleChildScrollView(
               padding: AppPadding.paddingH25,
               child: Form(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 key: _formKey,
+                autovalidateMode: AutovalidateMode.disabled,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -139,11 +138,7 @@ class _SignupPageState extends State<SignupPage> {
                       hint: SignupStrings.enterName,
                       label: SignupStrings.name,
                       onChanged: (_) => _clearErrorsIfNeeded(context),
-                      validator: (value) {
-                        final v = (value ?? '').trim();
-                        if (v.length < 3) return SignupStrings.invalidName;
-                        return null;
-                      },
+                      validator: AppValidators.validateName,
                     ),
 
                     const SizedBox(height: SizedBoxSizes.sizedBoxMediumHeight),
@@ -156,8 +151,8 @@ class _SignupPageState extends State<SignupPage> {
                       label: AuthStrings.email,
                       onChanged: (_) => _clearErrorsIfNeeded(context),
                       validator: (value) {
-                        final v = (value ?? '').trim();
-                        if (!_isValidEmail(v)) return SignupStrings.invalidEmail;
+                        final clientError = AppValidators.validateEmail(value);
+                        if (clientError != null) return clientError;
                         if (serverEmailError != null) return serverEmailError;
                         return null;
                       },
@@ -174,11 +169,9 @@ class _SignupPageState extends State<SignupPage> {
                       isPassword: true,
                       onChanged: (_) => _clearErrorsIfNeeded(context),
                       validator: (value) {
-                        final v = (value ?? '');
-                        if (v.length < 8) return SignupStrings.invalidPassword;
-                        if (serverPasswordError != null) {
-                          return serverPasswordError;
-                        }
+                        final clientError = AppValidators.validatePassword(value);
+                        if (clientError != null) return clientError;
+                        if (serverPasswordError != null) return serverPasswordError;
                         return null;
                       },
                     ),
@@ -193,16 +186,8 @@ class _SignupPageState extends State<SignupPage> {
                       label: SignupStrings.confirmPassword,
                       isPassword: true,
                       onChanged: (_) => _clearErrorsIfNeeded(context),
-                      validator: (value) {
-                        final v = (value ?? '');
-                        if (v.isEmpty) {
-                          return SignupStrings.invalidConfirmPassword;
-                        }
-                        if (v != _passwordCtrl.text) {
-                          return SignupStrings.passwordNotMatch;
-                        }
-                        return null;
-                      },
+                      validator: (value) =>
+                          AppValidators.validateConfirmPassword(value, _passwordCtrl.text),
                     ),
 
                     const SizedBox(height: SizedBoxSizes.sizedBoxMediumHeight),
@@ -221,12 +206,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ],
                       onChanged: (_) => _clearErrorsIfNeeded(context),
-                      validator: (value) {
-                        final v = (value ?? '').trim();
-                        final n = double.tryParse(v);
-                        if (n == null || n <= 0) return SignupStrings.invalidHourRate;
-                        return null;
-                      },
+                      validator: AppValidators.validateHourlyRate,
                     ),
 
                     const SizedBox(height: SizedBoxSizes.sizedBoxMediumHeight),
@@ -256,6 +236,7 @@ class _SignupPageState extends State<SignupPage> {
                             name: _nameCtrl.text.trim(),
                             email: _emailCtrl.text.trim(),
                             password: _passwordCtrl.text,
+                            hourlyRate: double.tryParse(_hourRateCtrl.text.trim()) ?? 0,
                           ),
                         );
                       },
