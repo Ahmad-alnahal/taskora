@@ -7,6 +7,7 @@ import 'package:taskora/features/auth/presentation/pages/forgot_password_page.da
 import 'package:taskora/features/auth/presentation/pages/login_page.dart';
 import 'package:taskora/features/auth/presentation/pages/signup_page.dart';
 import 'package:taskora/features/auth/presentation/pages/auth_gate_page.dart';
+import 'package:taskora/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:taskora/features/auth/presentation/pages/verify_reset_code_page.dart';
 import 'package:taskora/features/main_nav/pages/main_page.dart';
 import 'package:taskora/features/splash/presentation/bloc/splash_bloc.dart';
@@ -49,6 +50,12 @@ class AppRoutes {
           builder: (_) => VerifyResetCodePage(email: email),
         );
 
+      case AppRoutersName.resetPassword:
+        final email = settings.arguments as String;
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => ResetPasswordPage(email: email),
+        );
 
       default:
         return MaterialPageRoute(
