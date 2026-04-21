@@ -64,7 +64,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _onSignup(SignupEvent event, Emitter<AuthState> emit) async {
     await _run(emit, () async {
-      await signup(name: event.name, email: event.email, password: event.password);
+      await signup(
+        name: event.name,
+        email: event.email,
+        password: event.password,
+        hourlyRate: event.hourlyRate,
+      );
       emit(SignupSuccess());
     });
   }
